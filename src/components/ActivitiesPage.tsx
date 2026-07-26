@@ -66,7 +66,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
       title: 'Bhagavad Gita & Quantum Physics Masterclass',
       sanskritTag: 'Gita Jnana Sastra',
       category: 'Spiritual Education',
-      icon: <BookOpen className="w-6 h-6 text-[#C69214]" />,
+      icon: <BookOpen className="w-6 h-6 text-[#6A1B29]" />,
       schedule: 'Every Saturday, 6:00 PM - 7:30 PM',
       location: 'Main Auditorium & YouTube Live',
       isOnline: true,
@@ -79,7 +79,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
       title: 'Vedic Leadership & Ethics Circle',
       sanskritTag: 'Youth Dharma Club',
       category: 'Spiritual Education',
-      icon: <BookOpen className="w-6 h-6 text-[#C69214]" />,
+      icon: <BookOpen className="w-6 h-6 text-[#6A1B29]" />,
       schedule: 'Every Sunday, 10:00 AM - 11:30 AM',
       location: 'University Campus Center',
       isOnline: false,
@@ -94,7 +94,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
       title: 'Daily Sattvic Food Relief Drive (Anna Daan)',
       sanskritTag: 'Maha Prasadam Seva',
       category: 'Food Distribution',
-      icon: <Utensils className="w-6 h-6 text-[#B24227]" />,
+      icon: <Utensils className="w-6 h-6 text-[#C68A2C]" />,
       schedule: 'Daily, 12:00 PM - 2:00 PM',
       location: 'City Shelter Zones & Public Hospitals',
       isOnline: false,
@@ -107,7 +107,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
       title: 'Sunday Community Gratitude Prasadam Feast',
       sanskritTag: 'Ananda Bhandara',
       category: 'Food Distribution',
-      icon: <Utensils className="w-6 h-6 text-[#B24227]" />,
+      icon: <Utensils className="w-6 h-6 text-[#C68A2C]" />,
       schedule: 'Every Sunday, 1:00 PM - 3:00 PM',
       location: 'Temple Cultural Hall',
       isOnline: false,
@@ -122,7 +122,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
       title: 'Campus Anti-Drug & Addiction Awareness Campaign',
       sanskritTag: 'Nasha Mukti Campaign',
       category: 'Anti-Drug & Counseling Initiatives',
-      icon: <ShieldAlert className="w-6 h-6 text-[#B24227]" />,
+      icon: <ShieldAlert className="w-6 h-6 text-[#C68A2C]" />,
       schedule: 'Bi-Weekly Wednesdays',
       location: 'Regional High Schools & Universities',
       isOnline: false,
@@ -135,7 +135,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
       title: 'Confidential 1-on-1 Spiritual & Personal Counseling',
       sanskritTag: 'Atma Samvaad Care',
       category: 'Anti-Drug & Counseling Initiatives',
-      icon: <ShieldAlert className="w-6 h-6 text-[#C69214]" />,
+      icon: <ShieldAlert className="w-6 h-6 text-[#6A1B29]" />,
       schedule: 'By Appointment (24/7 Helpline Available)',
       location: 'Sanctuary Care Rooms or Private Zoom',
       isOnline: true,
@@ -150,7 +150,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
       title: 'Temple Preservation & Deity Worship Seva',
       sanskritTag: 'Mandir Archanam',
       category: 'Temple Support',
-      icon: <Building2 className="w-6 h-6 text-[#C69214]" />,
+      icon: <Building2 className="w-6 h-6 text-[#6A1B29]" />,
       schedule: 'Daily Worship: 4:30 AM - 8:30 PM',
       location: 'Main Temple Sanctuary',
       isOnline: false,
@@ -163,7 +163,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
       title: 'Soul-Elevating Sandhya Kirtan & Mantra Meditation',
       sanskritTag: 'Nāmāmrta Kirtan',
       category: 'Temple Support',
-      icon: <Building2 className="w-6 h-6 text-[#C69214]" />,
+      icon: <Building2 className="w-6 h-6 text-[#6A1B29]" />,
       schedule: 'Daily, 7:00 PM - 8:15 PM',
       location: 'Temple Main Hall & Live Stream',
       isOnline: true,
@@ -200,20 +200,20 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
   };
 
   return (
-    <div className="w-full bg-[#0D0C0A] text-[#E4E3E0] min-h-screen pt-6 pb-20">
+    <div className="w-full bg-transparent text-[#EDE8E1] min-h-screen pt-6 pb-20">
       
       {/* HEADER HERO */}
-      <section className="px-6 sm:px-12 lg:px-16 py-12 max-w-7xl mx-auto text-center border-b border-[#C69214]/20">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#1A1815] border border-[#C69214]/40 text-[#C69214] text-xs font-bold uppercase tracking-[0.2em] mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
+      <section className="px-6 sm:px-12 lg:px-16 py-12 max-w-7xl mx-auto text-center border-b border-[#DDA038]/20">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#181512] border border-[#DDA038]/30 text-[#DDA038] font-ui text-xs font-bold uppercase tracking-[0.2em] mb-6 rounded-sm shadow-xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#DDA038]" />
           <span>Active Programs & Seva Initiatives</span>
         </div>
 
-        <h1 className="serif text-4xl sm:text-5xl lg:text-6xl font-extrabold heading-light-texture leading-tight mb-6">
-          Community Initiatives & <span className="serif italic text-textured-gold font-extrabold">Spiritual Gathering Schedule</span>
+        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-[#EDE8E1]">
+          Community Initiatives & <span className="font-heading italic font-bold text-[#DDA038]">Spiritual Gathering Schedule</span>
         </h1>
 
-        <p className="text-base sm:text-lg text-[#A39E93] max-w-3xl mx-auto leading-relaxed border-l-2 sm:border-l-0 sm:border-t-2 border-[#C69214] pl-4 sm:pl-0 sm:pt-4">
+        <p className="font-body text-base sm:text-lg text-[#A39B90] max-w-3xl mx-auto leading-relaxed border-l-2 sm:border-l-0 sm:border-t-2 border-[#DDA038] pl-4 sm:pl-0 sm:pt-4">
           Explore our weekly educational discourses, food relief distribution drives, anti-drug awareness campaigns, and sacred temple gatherings.
         </p>
       </section>
@@ -225,14 +225,14 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
           {categories.map((cat) => (
             <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 text-xs font-bold uppercase tracking-widest transition-all duration-200 border ${
+              className={`px-5 py-2.5 font-ui text-xs font-bold uppercase tracking-wider transition-all duration-200 border rounded-sm ${
                 activeCategory === cat
-                  ? 'bg-[#C69214] text-[#0D0C0A] border-[#C69214] shadow-lg gold-glow'
-                  : 'bg-[#1A1815] text-[#A39E93] hover:text-[#E4E3E0] border-[#C69214]/30 hover:border-[#C69214]'
+                  ? 'bg-[#9B2C3B] text-[#EDE8E1] border-[#DDA038]/40 shadow-sm'
+                  : 'bg-[#161412] text-[#A39B90] hover:text-[#EDE8E1] border-[#DDA038]/20 hover:border-[#DDA038]/40'
               }`}
             >
               {cat}
@@ -251,18 +251,18 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
                 key={act.id}
-                className="bg-[#1A1815] gold-border border-t-2 border border-[#C69214]/20 p-6 sm:p-8 flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300 shadow-xl"
+                className="bg-[#161412] border border-[#DDA038]/20 border-b-2 border-b-[#DDA038]/35 p-6 sm:p-8 flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300 shadow-md rounded-sm"
               >
                 <div>
                   {/* Top Row: Category Tag & Online Badge */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] bg-[#28241F] text-[#C69214] border border-[#C69214]/30">
+                    <span className="px-3 py-1 font-ui text-[10px] font-bold uppercase tracking-wider bg-[#1F1C18] text-[#DDA038] border border-[#DDA038]/30 rounded-xs">
                       {act.sanskritTag}
                     </span>
 
                     {act.isOnline && (
-                      <span className="flex items-center gap-1 text-[11px] text-green-400 font-medium bg-green-950/40 px-2.5 py-0.5 border border-green-800/40">
-                        <Video className="w-3 h-3" />
+                      <span className="flex items-center gap-1 font-ui text-[10px] text-emerald-400 font-bold uppercase tracking-wider bg-emerald-950/60 px-2.5 py-0.5 border border-emerald-500/30 rounded-xs">
+                        <Video className="w-3 h-3 text-emerald-400" />
                         Live Streamed
                       </span>
                     )}
@@ -270,42 +270,42 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
 
                   {/* Title */}
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="p-2.5 bg-[#0D0C0A] border border-[#C69214]/30 shrink-0">
+                    <div className="p-2.5 bg-[#1F1C18] border border-[#DDA038]/30 rounded-xs shrink-0">
                       {act.icon}
                     </div>
-                    <h3 className="serif italic text-2xl font-bold text-[#E4E3E0] leading-snug">
+                    <h3 className="font-heading italic text-2xl font-bold text-[#EDE8E1] leading-snug">
                       {act.title}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-[#A39E93] leading-relaxed mb-6">
+                  <p className="font-body text-xs sm:text-sm text-[#A39B90] leading-relaxed mb-6">
                     {act.description}
                   </p>
 
                   {/* Details Meta */}
-                  <div className="space-y-2 mb-6 text-xs text-[#E4E3E0] bg-[#0D0C0A]/60 p-4 border border-[#28241F]">
-                    <div className="flex items-center gap-2 text-[#C69214]">
+                  <div className="space-y-2 mb-6 text-xs text-[#EDE8E1] bg-[#1F1C18] p-4 border border-[#DDA038]/20 rounded-xs">
+                    <div className="flex items-center gap-2 text-[#DDA038] font-ui">
                       <Clock className="w-4 h-4 shrink-0" />
                       <span className="font-semibold uppercase tracking-wider">{act.schedule}</span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-[#A39E93]">
-                      <MapPin className="w-4 h-4 shrink-0 text-[#B24227]" />
+                    <div className="flex items-center gap-2 text-[#A39B90] font-body">
+                      <MapPin className="w-4 h-4 shrink-0 text-[#9B2C3B]" />
                       <span>{act.location}</span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-[#A39E93]">
-                      <Award className="w-4 h-4 shrink-0 text-[#C69214]" />
-                      <span className="text-[#C69214] font-bold">{act.impact}</span>
+                    <div className="flex items-center gap-2 text-[#A39B90] font-body">
+                      <Award className="w-4 h-4 shrink-0 text-[#DDA038]" />
+                      <span className="text-[#DDA038] font-bold">{act.impact}</span>
                     </div>
                   </div>
 
                   {/* Key Highlights */}
                   <div className="space-y-1.5 mb-6">
                     {act.keyHighlights.map((hl, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-[#A39E93]">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C69214] shrink-0" />
+                      <div key={idx} className="flex items-center gap-2 font-body text-xs text-[#A39B90]">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#DDA038] shrink-0" />
                         <span>{hl}</span>
                       </div>
                     ))}
@@ -313,20 +313,20 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                 </div>
 
                 {/* Card CTA */}
-                <div className="pt-4 border-t border-[#28241F] flex items-center justify-between">
+                <div className="pt-4 border-t border-[#DDA038]/20 flex items-center justify-between">
                   <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => {
                       const el = document.getElementById('donation-block');
                       if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="px-5 py-2 bg-[#C69214] text-[#0D0C0A] text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-md"
+                    className="px-5 py-2 bg-[#9B2C3B] text-[#EDE8E1] font-ui text-xs font-bold uppercase tracking-wider hover:bg-[#B33A4A] transition-all rounded-sm border border-[#DDA038]/30"
                   >
                     Sponsor This Initiative
                   </motion.button>
 
-                  <span className="text-[10px] text-[#A39E93] uppercase tracking-wider">
+                  <span className="font-ui text-[10px] text-[#A39B90] uppercase tracking-wider">
                     Open to All
                   </span>
                 </div>
@@ -339,36 +339,36 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
 
       {/* SECTION 2: COMPREHENSIVE "SUPPORT OUR SEVA" DONATION BLOCK */}
       <section id="donation-block" className="px-6 sm:px-12 lg:px-16 py-16 max-w-5xl mx-auto">
-        <div className="bg-[#1A1815] gold-border border-2 border-[#C69214]/40 p-8 sm:p-12 relative shadow-2xl">
+        <div className="bg-[#161412] border-2 border-[#DDA038]/30 border-b-2 border-b-[#DDA038]/40 p-8 sm:p-12 relative shadow-md rounded-sm">
           
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#0D0C0A] border border-[#B24227]/40 text-[#FF9E85] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-              <Heart className="w-3.5 h-3.5 text-[#B24227] fill-current" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#1F1C18] border border-[#DDA038]/30 text-[#DDA038] font-ui text-xs font-bold uppercase tracking-[0.2em] mb-4 rounded-sm">
+              <Heart className="w-3.5 h-3.5 text-[#DDA038] fill-current" />
               <span>Sacred Contribution Offering</span>
             </div>
 
-            <h2 className="serif text-3xl sm:text-4xl font-bold text-[#E4E3E0] leading-tight mb-3">
-              Support Our <span className="serif italic text-[#C69214]">Seva Initiatives</span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#EDE8E1] leading-tight mb-3">
+              Support Our <span className="font-heading italic text-[#DDA038]">Seva Initiatives</span>
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#A39E93] leading-relaxed">
+            <p className="font-body text-xs sm:text-sm text-[#A39B90] leading-relaxed">
               Your financial contribution directly feeds the hungry with Sattvic Prasadam, prints Bhagavad Gita wisdom books, and funds confidential youth counseling.
             </p>
           </div>
 
           {paymentSuccess ? (
-            <div className="p-8 bg-[#0D0C0A] border border-[#C69214] text-center space-y-4">
-              <div className="w-16 h-16 bg-[#C69214]/20 border border-[#C69214] rounded-full flex items-center justify-center mx-auto text-[#C69214]">
+            <div className="p-8 bg-[#181512] border border-[#DDA038]/40 text-center space-y-4 rounded-sm">
+              <div className="w-16 h-16 bg-[#DDA038]/10 border border-[#DDA038]/40 rounded-full flex items-center justify-center mx-auto text-[#DDA038]">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h3 className="serif italic text-2xl text-[#C69214]">Offering Received with Gratitude</h3>
-              <p className="text-sm text-[#E4E3E0]/80 max-w-md mx-auto">
-                Thank you, <strong className="text-white">{donorName || 'Kind Sevaka'}</strong>! Your offering of <strong className="text-[#C69214]">{currency === 'USD' ? '$' : '₹'}{getEffectiveAmount()}</strong> towards <strong className="text-[#B24227]">{selectedCause}</strong> has been received. May transcendental peace and divine blessings illuminate your life.
+              <h3 className="font-heading italic text-2xl text-[#DDA038]">Offering Received with Gratitude</h3>
+              <p className="font-body text-sm text-[#A39B90] max-w-md mx-auto">
+                Thank you, <strong className="text-[#EDE8E1]">{donorName || 'Kind Sevaka'}</strong>! Your offering of <strong className="text-[#DDA038]">{currency === 'USD' ? '$' : '₹'}{getEffectiveAmount()}</strong> towards <strong className="text-[#DDA038]">{selectedCause}</strong> has been received. May transcendental peace and divine blessings illuminate your life.
               </p>
               <button
                 onClick={() => setPaymentSuccess(false)}
-                className="mt-4 px-6 py-2.5 bg-[#C69214] text-[#0D0C0A] text-xs font-bold uppercase tracking-widest hover:brightness-110"
+                className="mt-4 px-6 py-2.5 bg-[#9B2C3B] text-[#EDE8E1] font-ui text-xs font-bold uppercase tracking-wider rounded-sm hover:bg-[#B33A4A] border border-[#DDA038]/30"
               >
                 Make Another Offering
               </button>
@@ -381,7 +381,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                 
                 {/* Currency Toggle */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-[#C69214] mb-2">
+                  <label className="block font-ui text-xs font-bold uppercase tracking-wider text-[#DDA038] mb-2">
                     1. Select Currency
                   </label>
                   <div className="grid grid-cols-2 gap-2">
@@ -392,13 +392,13 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                         setSelectedPreset(50);
                         setCustomAmount('50');
                       }}
-                      className={`py-2.5 text-xs font-bold uppercase tracking-wider border flex items-center justify-center gap-2 transition-all ${
+                      className={`py-2.5 font-ui text-xs font-bold uppercase tracking-wider border rounded-sm flex items-center justify-center gap-2 transition-all ${
                         currency === 'USD'
-                          ? 'bg-[#C69214] text-[#0D0C0A] border-[#C69214]'
-                          : 'bg-[#0D0C0A] text-[#A39E93] border-[#28241F] hover:border-[#C69214]/50'
+                          ? 'bg-[#9B2C3B] text-[#EDE8E1] border-[#DDA038]/40'
+                          : 'bg-[#181512] text-[#A39B90] border-[#DDA038]/20 hover:border-[#DDA038]/40'
                       }`}
                     >
-                      <DollarSign className="w-4 h-4" />
+                      <DollarSign className="w-4 h-4 text-[#DDA038]" />
                       <span>USD ($)</span>
                     </button>
 
@@ -409,13 +409,13 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                         setSelectedPreset(2000);
                         setCustomAmount('2000');
                       }}
-                      className={`py-2.5 text-xs font-bold uppercase tracking-wider border flex items-center justify-center gap-2 transition-all ${
+                      className={`py-2.5 font-ui text-xs font-bold uppercase tracking-wider border rounded-sm flex items-center justify-center gap-2 transition-all ${
                         currency === 'INR'
-                          ? 'bg-[#C69214] text-[#0D0C0A] border-[#C69214]'
-                          : 'bg-[#0D0C0A] text-[#A39E93] border-[#28241F] hover:border-[#C69214]/50'
+                          ? 'bg-[#9B2C3B] text-[#EDE8E1] border-[#DDA038]/40'
+                          : 'bg-[#181512] text-[#A39B90] border-[#DDA038]/20 hover:border-[#DDA038]/40'
                       }`}
                     >
-                      <IndianRupee className="w-4 h-4" />
+                      <IndianRupee className="w-4 h-4 text-[#DDA038]" />
                       <span>INR (₹)</span>
                     </button>
                   </div>
@@ -423,14 +423,14 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
 
                 {/* Cause Selector Dropdown */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-[#C69214] mb-2">
+                  <label className="block font-ui text-xs font-bold uppercase tracking-wider text-[#DDA038] mb-2">
                     2. Choose Cause / Initiative
                   </label>
                   <div className="relative">
                     <select
                       value={selectedCause}
                       onChange={(e) => setSelectedCause(e.target.value)}
-                      className="w-full bg-[#0D0C0A] border border-[#C69214]/40 px-4 py-2.5 text-xs text-[#E4E3E0] font-medium appearance-none focus:border-[#C69214] focus:outline-none"
+                      className="w-full bg-[#13110F] border border-[#DDA038]/30 rounded-sm px-4 py-2.5 font-body text-xs text-[#EDE8E1] appearance-none focus:border-[#DDA038] focus:outline-none"
                     >
                       <option value="Feed the Needy (Anna Daan)">Feed the Needy (Anna Daan Prasadam)</option>
                       <option value="Youth Counseling & Anti-Drug">Youth Counseling & Anti-Drug Campaigns</option>
@@ -438,7 +438,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                       <option value="Temple Restoration & Sanctuary Care">Temple Restoration & Sanctuary Care</option>
                       <option value="General Seva Fund">General Unrestricted Seva Fund</option>
                     </select>
-                    <ChevronDown className="w-4 h-4 text-[#C69214] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    <ChevronDown className="w-4 h-4 text-[#DDA038] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                   </div>
                 </div>
 
@@ -446,7 +446,7 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
 
               {/* Row 2: Predefined Amount Buttons & Custom Input */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-[#C69214] mb-3">
+                <label className="block font-ui text-xs font-bold uppercase tracking-wider text-[#DDA038] mb-3">
                   3. Select Offering Amount
                 </label>
 
@@ -461,13 +461,13 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                           setSelectedPreset(amt);
                           setCustomAmount(amt.toString());
                         }}
-                        className={`py-3 px-4 border text-center transition-all ${
+                        className={`py-3 px-4 border text-center transition-all rounded-sm ${
                           isSelected
-                            ? 'bg-[#B24227] text-white border-[#B24227] shadow-md rust-glow'
-                            : 'bg-[#0D0C0A] text-[#E4E3E0] border-[#28241F] hover:border-[#C69214]/40'
+                            ? 'bg-[#9B2C3B] text-[#EDE8E1] border-[#DDA038]/40 shadow-sm'
+                            : 'bg-[#181512] text-[#EDE8E1] border-[#DDA038]/20 hover:border-[#DDA038]/40'
                         }`}
                       >
-                        <span className="serif text-xl font-bold block">
+                        <span className="font-heading text-xl font-bold block text-[#DDA038]">
                           {currency === 'USD' ? '$' : '₹'}{amt}
                         </span>
                       </button>
@@ -476,8 +476,8 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                 </div>
 
                 {/* Custom Amount Input */}
-                <div className="flex items-center gap-3 bg-[#0D0C0A] border border-[#C69214]/40 p-2">
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#C69214] px-3">
+                <div className="flex items-center gap-3 bg-[#13110F] border border-[#DDA038]/30 rounded-sm p-2">
+                  <span className="font-ui text-xs font-bold uppercase tracking-wider text-[#DDA038] px-3">
                     Custom Amount ({currency}):
                   </span>
                   <input
@@ -489,15 +489,15 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                       setCustomAmount(e.target.value);
                     }}
                     placeholder="Enter custom amount"
-                    className="flex-grow bg-transparent text-lg font-bold text-white focus:outline-none"
+                    className="flex-grow bg-transparent font-heading text-lg font-bold text-[#EDE8E1] focus:outline-none"
                   />
                 </div>
               </div>
 
               {/* Row 3: Donor Contact Info */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-[#28241F]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-[#DDA038]/20">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-[#C69214] mb-1">
+                  <label className="block font-ui text-xs font-bold uppercase tracking-wider text-[#A39B90] mb-1">
                     Your Full Name
                   </label>
                   <input
@@ -506,12 +506,12 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                     value={donorName}
                     onChange={(e) => setDonorName(e.target.value)}
                     placeholder="e.g. Arjuna Sharma"
-                    className="w-full bg-[#0D0C0A] border border-[#C69214]/30 px-4 py-2.5 text-xs text-[#E4E3E0] focus:border-[#C69214] focus:outline-none"
+                    className="w-full bg-[#13110F] border border-[#DDA038]/30 rounded-sm px-4 py-2.5 font-body text-xs text-[#EDE8E1] focus:border-[#DDA038] focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-[#C69214] mb-1">
+                  <label className="block font-ui text-xs font-bold uppercase tracking-wider text-[#A39B90] mb-1">
                     Email Address (for tax receipt)
                   </label>
                   <input
@@ -520,14 +520,14 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                     value={donorEmail}
                     onChange={(e) => setDonorEmail(e.target.value)}
                     placeholder="e.g. arjuna@gita.org"
-                    className="w-full bg-[#0D0C0A] border border-[#C69214]/30 px-4 py-2.5 text-xs text-[#E4E3E0] focus:border-[#C69214] focus:outline-none"
+                    className="w-full bg-[#13110F] border border-[#DDA038]/30 rounded-sm px-4 py-2.5 font-body text-xs text-[#EDE8E1] focus:border-[#DDA038] focus:outline-none"
                   />
                 </div>
               </div>
 
               {/* Optional Dedication */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-[#C69214] mb-1">
+                <label className="block font-ui text-xs font-bold uppercase tracking-wider text-[#A39B90] mb-1">
                   Dedication Message / Prayer (Optional)
                 </label>
                 <textarea
@@ -535,20 +535,20 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
                   value={dedicationMsg}
                   onChange={(e) => setDedicationMsg(e.target.value)}
                   placeholder="In memory of family or special prayer request..."
-                  className="w-full bg-[#0D0C0A] border border-[#C69214]/30 px-4 py-2 text-xs text-[#E4E3E0] focus:border-[#C69214] focus:outline-none resize-none"
+                  className="w-full bg-[#13110F] border border-[#DDA038]/30 rounded-sm px-4 py-2 font-body text-xs text-[#EDE8E1] focus:border-[#DDA038] focus:outline-none resize-none"
                 />
               </div>
 
               {/* Trigger Payment Button */}
               <button
                 type="submit"
-                className="w-full py-4 bg-[#C69214] text-[#0D0C0A] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all shadow-xl gold-glow flex items-center justify-center gap-2"
+                className="w-full py-4 bg-[#9B2C3B] text-[#EDE8E1] font-ui font-bold text-xs uppercase tracking-wider hover:bg-[#B33A4A] transition-all rounded-sm border border-[#DDA038]/40 shadow-sm flex items-center justify-center gap-2"
               >
-                <Heart className="w-4 h-4 fill-current" />
+                <Heart className="w-4 h-4 fill-current text-[#DDA038]" />
                 <span>
                   Proceed to Complete Seva Offering ({currency === 'USD' ? '$' : '₹'}{getEffectiveAmount()})
                 </span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-[#DDA038]" />
               </button>
 
             </form>

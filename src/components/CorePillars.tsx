@@ -32,16 +32,16 @@ export const CorePillars: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.25, 1, 0.5, 1] }}
-          whileHover={{ y: -5, transition: { duration: 0.2 } }}
-          className="bg-[#1A1815] rounded-2xl p-6 gold-border border-t-2 border border-[#C69214]/20 hover:border-[#C69214]/50 transition-colors shadow-lg group cursor-default"
+          whileHover={{ y: -4, transition: { duration: 0.2 } }}
+          className="bg-[#161412] rounded-sm p-6 border border-[#DDA038]/20 border-b-2 border-b-[#DDA038]/35 hover:border-[#DDA038]/50 transition-all shadow-md group cursor-default"
         >
-          <span className="text-[#C69214] text-xs font-bold uppercase tracking-widest block mb-2 group-hover:text-[#F4EFE6] transition-colors">
+          <span className="font-ui text-[#DDA038] text-xs font-bold uppercase tracking-wider block mb-2">
             {item.num}. {item.title}
           </span>
-          <h3 className="serif text-xl mb-2 italic text-[#E4E3E0]">
+          <h3 className="font-heading text-xl mb-2 italic text-[#EDE8E1] font-bold">
             {item.subtitle}
           </h3>
-          <p className="text-sm text-white/50 leading-relaxed">
+          <p className="font-body text-sm text-[#A39B90] leading-relaxed">
             {item.desc}
           </p>
         </motion.div>

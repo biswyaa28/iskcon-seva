@@ -16,12 +16,12 @@ export const SevaImpact: React.FC<SevaImpactProps> = ({ onInitiateSeva }) => {
   const sliderPercentage = Math.min(100, Math.max(0, (amount / 500) * 100));
 
   return (
-    <section id="seva" className="bg-[#1A1815] mx-6 sm:mx-12 p-6 sm:p-8 border border-white/5 flex flex-col md:flex-row items-stretch md:items-center gap-8 md:gap-12 mb-8 shadow-2xl">
+    <section id="seva" className="bg-[#161412] mx-6 sm:mx-12 p-6 sm:p-8 border border-[#DDA038]/20 border-b-2 border-b-[#DDA038]/30 flex flex-col md:flex-row items-stretch md:items-center gap-8 md:gap-12 mb-8 shadow-xs rounded-sm">
       <div className="flex-grow">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-4 gap-4 sm:gap-0">
           <div>
-            <h2 className="serif text-2xl font-extrabold text-textured-gold">Seva Impact Calculator</h2>
-            <p className="text-xs text-white/40 uppercase tracking-widest mt-1">
+            <h2 className="font-heading text-2xl font-bold text-[#DDA038]">Seva Impact Calculator</h2>
+            <p className="font-ui text-xs text-[#A39B90] uppercase tracking-wider mt-1">
               Calculate your contribution to the food relief program
             </p>
           </div>
@@ -31,18 +31,18 @@ export const SevaImpact: React.FC<SevaImpactProps> = ({ onInitiateSeva }) => {
               initial={{ scale: 1.1, opacity: 0.8 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.2 }}
-              className="inline-block text-4xl sm:text-5xl font-light text-[#B24227] tracking-tighter"
+              className="inline-block text-4xl sm:text-5xl font-heading font-bold text-[#DDA038] tracking-tight"
             >
               ${amount}
             </motion.span>
-            <span className="block text-[10px] text-white/40 uppercase tracking-widest">
+            <span className="block font-ui text-[10px] text-[#A39B90] uppercase tracking-widest">
               Monthly Donation
             </span>
           </div>
         </div>
 
         {/* Interactive Slider */}
-        <div className="relative h-2 bg-white/10 rounded-full mb-6 cursor-pointer group">
+        <div className="relative h-2 bg-[#DDA038]/20 rounded-full mb-6 cursor-pointer group">
           <input 
             type="range"
             min={10}
@@ -53,48 +53,48 @@ export const SevaImpact: React.FC<SevaImpactProps> = ({ onInitiateSeva }) => {
             className="absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer"
           />
           <div 
-            className="absolute left-0 top-0 h-full bg-[#B24227] rounded-full transition-all duration-150"
+            className="absolute left-0 top-0 h-full bg-[#DDA038] rounded-full transition-all duration-150"
             style={{ width: `${sliderPercentage}%` }}
           />
           <div 
-            className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-white border-2 border-[#B24227] rounded-full shadow-lg transition-all duration-150 pointer-events-none"
+            className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-[#0F0D0C] border-2 border-[#DDA038] rounded-full shadow-md transition-all duration-150 pointer-events-none"
             style={{ left: `calc(${sliderPercentage}% - 10px)` }}
           />
         </div>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-3">
           <motion.button 
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={() => handleTierChange(50)}
-            className={`px-4 py-1.5 text-[10px] uppercase font-bold border transition-all ${
+            className={`px-4 py-1.5 font-ui text-[10px] uppercase font-bold border transition-all rounded-xs ${
               amount === 50 
-                ? 'bg-[#B24227] border-[#B24227] text-white' 
-                : 'border-white/10 text-white/60 hover:border-white/30'
+                ? 'bg-[#9B2C3B] border-[#DDA038]/40 text-[#EDE8E1]' 
+                : 'border-[#DDA038]/20 text-[#A39B90] hover:border-[#DDA038]/40 hover:text-[#EDE8E1]'
             }`}
           >
             $50 Tier
           </motion.button>
           <motion.button 
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={() => handleTierChange(100)}
-            className={`px-4 py-1.5 text-[10px] uppercase font-bold border transition-all ${
+            className={`px-4 py-1.5 font-ui text-[10px] uppercase font-bold border transition-all rounded-xs ${
               amount === 100 
-                ? 'bg-[#B24227] border-[#B24227] text-white' 
-                : 'border-white/10 text-white/60 hover:border-white/30'
+                ? 'bg-[#9B2C3B] border-[#DDA038]/40 text-[#EDE8E1]' 
+                : 'border-[#DDA038]/20 text-[#A39B90] hover:border-[#DDA038]/40 hover:text-[#EDE8E1]'
             }`}
           >
             $100 Tier
           </motion.button>
           <motion.button 
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={() => handleTierChange(250)}
-            className={`px-4 py-1.5 text-[10px] uppercase font-bold border transition-all ${
+            className={`px-4 py-1.5 font-ui text-[10px] uppercase font-bold border transition-all rounded-xs ${
               amount === 250 
-                ? 'bg-[#B24227] border-[#B24227] text-white' 
-                : 'border-white/10 text-white/60 hover:border-white/30'
+                ? 'bg-[#9B2C3B] border-[#DDA038]/40 text-[#EDE8E1]' 
+                : 'border-[#DDA038]/20 text-[#A39B90] hover:border-[#DDA038]/40 hover:text-[#EDE8E1]'
             }`}
           >
             $250 Advocate
@@ -102,24 +102,24 @@ export const SevaImpact: React.FC<SevaImpactProps> = ({ onInitiateSeva }) => {
         </div>
       </div>
 
-      <div className="w-full md:w-64 border-t md:border-t-0 md:border-l border-white/5 pt-6 md:pt-0 md:pl-12 flex flex-col justify-center">
+      <div className="w-full md:w-64 border-t md:border-t-0 md:border-l border-[#DDA038]/20 pt-6 md:pt-0 md:pl-12 flex flex-col justify-center">
         <motion.div 
           key={meals}
           initial={{ scale: 1.15, opacity: 0.8 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="text-4xl serif italic text-white/90"
+          className="text-4xl font-heading italic text-[#EDE8E1] font-bold"
         >
           {meals}
         </motion.div>
-        <div className="text-xs text-white/40 uppercase tracking-tighter mb-4">
+        <div className="font-ui text-xs text-[#A39B90] uppercase tracking-wider mb-4">
           Meals distributed daily
         </div>
         <motion.button 
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => onInitiateSeva?.(amount, meals)}
-          className="w-full bg-[#C69214] text-[#0D0C0A] py-3 text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-md"
+          className="w-full bg-[#9B2C3B] text-[#EDE8E1] py-3 font-ui text-xs font-bold uppercase tracking-wider hover:bg-[#B33A4A] border border-[#DDA038]/30 transition-all shadow-xs rounded-sm"
         >
           Initiate Seva
         </motion.button>

@@ -36,7 +36,7 @@ export default function App() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#0D0C0A] text-[#E4E3E0] flex flex-col font-sans overflow-x-hidden selection:bg-[#C69214] selection:text-[#0D0C0A]">
+    <div className="w-full min-h-screen bg-[#0C0B0A] text-[#EDE8E1] flex flex-col font-body overflow-x-hidden selection:bg-[#DDA038] selection:text-[#0C0B0A] bg-dot-texture">
       
       {/* Modern Responsive Navbar */}
       <Navbar 
@@ -46,7 +46,7 @@ export default function App() {
       />
 
       {/* Main View Area */}
-      <main className="flex-grow flex flex-col relative overflow-hidden">
+      <main className="flex-grow flex flex-col relative overflow-hidden bg-transparent">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab + (selectedPostSlug || '')}
@@ -114,25 +114,25 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
           >
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="bg-[#1A1815] border-2 border-[#B24227] p-8 max-w-md w-full relative shadow-2xl"
+              className="bg-[#181512] border-2 border-[#DDA038]/40 p-8 max-w-md w-full relative shadow-2xl rounded-sm"
             >
               <button 
                 onClick={() => setSevaModalData(null)}
-                className="absolute top-4 right-4 text-white/50 hover:text-white text-xl font-bold"
+                className="absolute top-4 right-4 text-[#A39B90] hover:text-[#EDE8E1] text-xl font-bold font-ui"
               >
                 ✕
               </button>
-              <span className="text-[10px] uppercase tracking-widest text-[#B24227] font-bold block mb-1">Sacred Seva Contribution</span>
-              <h3 className="serif italic text-2xl text-white mb-2">Confirm ${sevaModalData.amount} Monthly Seva</h3>
-              <p className="text-sm text-white/70 mb-6 border-l-2 border-[#B24227] pl-4">
-                Your contribution directly sponsors <strong className="text-[#C69214]">{sevaModalData.meals} hot Sattvic meals daily</strong> for underprivileged communities and hospital visitors.
+              <span className="font-ui uppercase text-xs tracking-wider text-[#DDA038] font-bold block mb-1">Sacred Seva Contribution</span>
+              <h3 className="font-heading text-2xl text-[#EDE8E1] mb-2 font-bold">Confirm ${sevaModalData.amount} Monthly Seva</h3>
+              <p className="text-sm font-body text-[#A39B90] mb-6 border-l-2 border-[#DDA038] pl-4">
+                Your contribution directly sponsors <strong className="text-[#DDA038] font-semibold">{sevaModalData.meals} hot Sattvic meals daily</strong> for underprivileged communities and hospital visitors.
               </p>
 
               <motion.button 
@@ -142,7 +142,7 @@ export default function App() {
                   alert(`Thank you for contributing $${sevaModalData.amount} monthly seva! May you be blessed with transcendental peace.`);
                   setSevaModalData(null);
                 }}
-                className="w-full bg-[#B24227] text-white py-3 text-xs font-bold uppercase tracking-widest hover:bg-[#D85436] transition-all shadow-lg rust-glow"
+                className="w-full bg-[#9B2C3B] text-[#EDE8E1] py-3 font-ui text-xs font-bold uppercase tracking-wider hover:bg-[#B33A4A] transition-all shadow-md rounded-sm"
               >
                 Complete Offering (${sevaModalData.amount}/mo)
               </motion.button>
