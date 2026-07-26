@@ -20,7 +20,7 @@ export const SevaImpact: React.FC<SevaImpactProps> = ({ onInitiateSeva }) => {
       <div className="flex-grow">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-4 gap-4 sm:gap-0">
           <div>
-            <h2 className="serif text-2xl text-[#C69214]">Seva Impact Calculator</h2>
+            <h2 className="serif text-2xl font-extrabold text-textured-gold">Seva Impact Calculator</h2>
             <p className="text-xs text-white/40 uppercase tracking-widest mt-1">
               Calculate your contribution to the food relief program
             </p>

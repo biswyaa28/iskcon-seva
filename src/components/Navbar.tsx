@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, HeartHandshake } from 'lucide-react';
+import logoImg from '../assets/logo.jpg';
 
 interface NavbarProps {
   activeTab?: string;
@@ -38,11 +39,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center gap-3 group text-left focus:outline-none"
         >
           <motion.div 
-            whileHover={{ scale: 1.08, rotate: 5 }}
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            className="w-10 h-10 bg-[#C69214] rounded-full flex items-center justify-center text-[#0D0C0A] font-bold text-xl shadow-md"
+            className="w-11 h-11 rounded-full overflow-hidden border border-[#C69214]/60 p-0.5 bg-[#1A1815] shadow-md shrink-0 flex items-center justify-center"
           >
-            K
+            <img src={logoImg} alt="Science of Krishna Logo" className="w-full h-full object-cover object-center scale-110 rounded-full" />
           </motion.div>
           <div className="flex flex-col">
             <span className="serif italic font-bold text-lg sm:text-xl text-[#C69214] group-hover:text-[#F4EFE6] transition-colors">

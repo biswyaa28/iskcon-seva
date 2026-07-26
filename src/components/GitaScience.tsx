@@ -43,8 +43,8 @@ export const GitaScience: React.FC = () => {
             <span className="material-symbols-outlined text-sm">auto_stories</span>
             <span>Verses & Scientific Parallels</span>
           </div>
-          <h2 className="serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#E4E3E0] leading-tight mb-4">
-            Bhagavad Gita & <span className="serif italic text-[#C69214]">Modern Science Explorer</span>
+          <h2 className="serif text-3xl sm:text-4xl md:text-5xl font-extrabold heading-light-texture leading-tight mb-4">
+            Bhagavad Gita & <span className="serif italic text-textured-gold font-extrabold">Modern Science Explorer</span>
           </h2>
           <p className="text-sm sm:text-base text-[#A39E93]">
             Examine ancient Sanskrit slokas alongside modern peer-reviewed physics, biology, and cognitive science.

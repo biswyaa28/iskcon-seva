@@ -193,8 +193,8 @@ export const SchedulePage: React.FC = () => {
           <span>Interactive Event Calendar & Schedule</span>
         </div>
 
-        <h1 className="serif text-4xl sm:text-5xl lg:text-6xl font-bold text-[#E4E3E0] leading-tight mb-4">
-          Gathering & <span className="serif italic text-[#C69214]">Activity Schedule</span>
+        <h1 className="serif text-4xl sm:text-5xl lg:text-6xl font-extrabold heading-light-texture leading-tight mb-4">
+          Gathering & <span className="serif italic text-textured-gold font-extrabold">Activity Schedule</span>
         </h1>
 
         <p className="text-base sm:text-lg text-[#A39E93] max-w-3xl mx-auto leading-relaxed border-l-2 sm:border-l-0 sm:border-t-2 border-[#C69214] pl-4 sm:pl-0 sm:pt-4">

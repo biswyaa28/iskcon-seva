@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Instagram, Youtube, Check, ArrowRight, Shield } from 'lucide-react';
+import logoImg from '../assets/logo.jpg';
 
 interface FooterProps {
   onNavClick?: (target: string) => void;
@@ -27,8 +28,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
           {/* Col 1: Brand & Mission */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#C69214] rounded-full flex items-center justify-center text-[#0D0C0A] font-bold text-xl shadow-md">
-                K
+              <div className="w-11 h-11 rounded-full overflow-hidden border border-[#C69214]/60 p-0.5 bg-[#1A1815] shadow-md shrink-0 flex items-center justify-center">
+                <img src={logoImg} alt="Science of Krishna Logo" className="w-full h-full object-cover object-center scale-110 rounded-full" />
               </div>
               <div className="flex flex-col">
                 <span className="serif font-bold text-xl text-[#C69214]">
@@ -67,8 +68,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavClick?.('about')} className="hover:text-[#C69214] transition-colors text-left">
-                  About & Objectives
+                <button onClick={() => onNavClick?.('activities')} className="hover:text-[#C69214] transition-colors text-left">
+                  Activities
                 </button>
               </li>
               <li>
@@ -82,8 +83,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavClick?.('seva')} className="hover:text-[#C69214] transition-colors text-left">
-                  Food Relief (Anna Daan)
+                <button onClick={() => onNavClick?.('about')} className="hover:text-[#C69214] transition-colors text-left">
+                  About Us
                 </button>
               </li>
             </ul>

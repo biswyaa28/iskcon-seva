@@ -39,8 +39,8 @@ export const ActivitiesSchedule: React.FC = () => {
             <span className="material-symbols-outlined text-sm">calendar_month</span>
             <span>Gatherings & Discourses</span>
           </div>
-          <h2 className="serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#E4E3E0] leading-tight mb-4">
-            Weekly <span className="serif italic text-[#C69214]">Activities & Feasts</span>
+          <h2 className="serif text-3xl sm:text-4xl md:text-5xl font-extrabold heading-light-texture leading-tight mb-4">
+            Weekly <span className="serif italic text-textured-gold font-extrabold">Activities & Feasts</span>
           </h2>
           <p className="text-sm sm:text-base text-[#A39E93]">
             Join our vibrant community for weekly discourses, Sunday Prasadam feasts, scientific study circles, and meditation sessions.

@@ -86,7 +86,7 @@ export const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ slug, onBack, on
         </div>
 
         {/* Title & Subtitle */}
-        <h1 className="serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#E4E3E0] leading-tight mb-4">
+        <h1 className="serif text-3xl sm:text-4xl lg:text-5xl font-extrabold heading-light-texture leading-tight mb-4">
           {post.title}
         </h1>
 

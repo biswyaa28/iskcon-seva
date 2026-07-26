@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import logoImg from '../assets/logo.jpg';
 
 export const Hero: React.FC = () => {
   return (
@@ -23,10 +24,10 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="serif text-4xl sm:text-5xl lg:text-7xl leading-[1.1] mb-6 text-[#E4E3E0]"
+            className="serif text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.1] mb-6 heading-light-texture tracking-tight"
           >
             Ancient Wisdom <br /> 
-            <span className="text-[#B24227] italic">Applied</span> to <br />
+            <span className="text-textured-terracotta italic font-black">Applied</span> to <br />
             Modern Living.
           </motion.h1>
           
@@ -57,15 +58,13 @@ export const Hero: React.FC = () => {
             <motion.div 
               animate={{ y: [-4, 4, -4] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="w-64 h-64 sm:w-80 sm:h-80 bg-[#1A1815] rounded-full flex items-center justify-center overflow-hidden border border-[#C69214]/30 relative shadow-2xl"
+              className="w-64 h-64 sm:w-80 sm:h-80 bg-[#1A1815] rounded-full flex items-center justify-center overflow-hidden border-2 border-[#C69214]/60 relative shadow-2xl p-1"
             >
-              <motion.div 
-                animate={{ rotate: [-10, 10, -10] }}
-                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                className="text-[#C69214] opacity-25 text-7xl sm:text-9xl font-bold select-none"
-              >
-                🪷
-              </motion.div>
+              <img 
+                src={logoImg} 
+                alt="Science of Krishna Emblem" 
+                className="w-full h-full object-cover object-center scale-105 rounded-full filter drop-shadow-xl"
+              />
             </motion.div>
           </div>
         </motion.div>

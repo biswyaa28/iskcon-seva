@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImg from '../assets/logo.jpg';
 
 interface HeaderProps {
   onLoginClick?: () => void;
@@ -9,8 +10,8 @@ export const Header: React.FC<HeaderProps> = ({ onLoginClick, onNavClick }) => {
   return (
     <header className="h-20 px-6 sm:px-12 flex items-center justify-between border-b border-white/5 bg-[#0D0C0A] z-40">
       <div className="flex items-center gap-3 cursor-pointer" onClick={() => onNavClick?.('home')}>
-        <div className="w-10 h-10 bg-[#C69214] rounded-full flex items-center justify-center text-[#0D0C0A] font-bold text-xl">
-          K
+        <div className="w-10 h-10 rounded-full overflow-hidden border border-[#C69214]/60 p-0.5 bg-[#1A1815] shrink-0 flex items-center justify-center">
+          <img src={logoImg} alt="Science of Krishna Logo" className="w-full h-full object-cover object-center scale-110 rounded-full" />
         </div>
         <span className="text-xl font-bold tracking-tight text-[#C69214] serif italic">
           Science of Krishna

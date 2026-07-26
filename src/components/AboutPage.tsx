@@ -161,9 +161,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenSeva, onNavigate }) 
           </div>
 
           {/* Main Hero Title */}
-          <h1 className="serif text-4xl sm:text-5xl lg:text-7xl font-bold text-[#E4E3E0] leading-[1.1] mb-8">
+          <h1 className="serif text-4xl sm:text-5xl lg:text-7xl font-extrabold heading-light-texture leading-[1.1] mb-8">
             Bridging Eternal Wisdom & <br className="hidden sm:block" />
-            <span className="serif italic text-[#B24227]">Compassionate Service</span>
+            <span className="serif italic text-textured-terracotta font-black">Compassionate Service</span>
           </h1>
 
           {/* Subtitle / Narrative */}
@@ -265,8 +265,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenSeva, onNavigate }) 
             <Users className="w-3.5 h-3.5" />
             <span>Pillars of Action</span>
           </div>
-          <h2 className="serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#E4E3E0] leading-tight mb-4">
-            Our Key <span className="serif italic text-[#C69214]">Objectives & Service Initiatives</span>
+          <h2 className="serif text-3xl sm:text-4xl md:text-5xl font-extrabold heading-light-texture leading-tight mb-4">
+            Our Key <span className="serif italic text-textured-gold font-extrabold">Objectives & Service Initiatives</span>
           </h2>
           <p className="text-sm sm:text-base text-[#A39E93]">
             Explore how we put Vedic philosophy into tangible action across six key domains of community welfare and spiritual enlightenment.
