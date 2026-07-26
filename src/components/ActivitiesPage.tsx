@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   BookOpen, 
   Utensils, 
@@ -223,7 +224,9 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
         {/* Category Pills */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
           {categories.map((cat) => (
-            <button
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`px-5 py-2.5 text-xs font-bold uppercase tracking-widest transition-all duration-200 border ${
@@ -233,95 +236,104 @@ export const ActivitiesPage: React.FC<ActivitiesPageProps> = ({ onOpenSevaModal 
               }`}
             >
               {cat}
-            </button>
+            </motion.button>
           ))}
         </div>
 
         {/* Activity Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredActivities.map((act) => (
-            <div
-              key={act.id}
-              className="bg-[#1A1815] gold-border border-t-2 border border-[#C69214]/20 p-6 sm:p-8 flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300 shadow-xl"
-            >
-              <div>
-                {/* Top Row: Category Tag & Online Badge */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] bg-[#28241F] text-[#C69214] border border-[#C69214]/30">
-                    {act.sanskritTag}
-                  </span>
-
-                  {act.isOnline && (
-                    <span className="flex items-center gap-1 text-[11px] text-green-400 font-medium bg-green-950/40 px-2.5 py-0.5 border border-green-800/40">
-                      <Video className="w-3 h-3" />
-                      Live Streamed
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <AnimatePresence>
+            {filteredActivities.map((act) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+                key={act.id}
+                className="bg-[#1A1815] gold-border border-t-2 border border-[#C69214]/20 p-6 sm:p-8 flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300 shadow-xl"
+              >
+                <div>
+                  {/* Top Row: Category Tag & Online Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] bg-[#28241F] text-[#C69214] border border-[#C69214]/30">
+                      {act.sanskritTag}
                     </span>
-                  )}
-                </div>
 
-                {/* Title */}
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="p-2.5 bg-[#0D0C0A] border border-[#C69214]/30 shrink-0">
-                    {act.icon}
-                  </div>
-                  <h3 className="serif italic text-2xl font-bold text-[#E4E3E0] leading-snug">
-                    {act.title}
-                  </h3>
-                </div>
-
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-[#A39E93] leading-relaxed mb-6">
-                  {act.description}
-                </p>
-
-                {/* Details Meta */}
-                <div className="space-y-2 mb-6 text-xs text-[#E4E3E0] bg-[#0D0C0A]/60 p-4 border border-[#28241F]">
-                  <div className="flex items-center gap-2 text-[#C69214]">
-                    <Clock className="w-4 h-4 shrink-0" />
-                    <span className="font-semibold uppercase tracking-wider">{act.schedule}</span>
+                    {act.isOnline && (
+                      <span className="flex items-center gap-1 text-[11px] text-green-400 font-medium bg-green-950/40 px-2.5 py-0.5 border border-green-800/40">
+                        <Video className="w-3 h-3" />
+                        Live Streamed
+                      </span>
+                    )}
                   </div>
 
-                  <div className="flex items-center gap-2 text-[#A39E93]">
-                    <MapPin className="w-4 h-4 shrink-0 text-[#B24227]" />
-                    <span>{act.location}</span>
-                  </div>
-
-                  <div className="flex items-center gap-2 text-[#A39E93]">
-                    <Award className="w-4 h-4 shrink-0 text-[#C69214]" />
-                    <span className="text-[#C69214] font-bold">{act.impact}</span>
-                  </div>
-                </div>
-
-                {/* Key Highlights */}
-                <div className="space-y-1.5 mb-6">
-                  {act.keyHighlights.map((hl, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-[#A39E93]">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C69214] shrink-0" />
-                      <span>{hl}</span>
+                  {/* Title */}
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="p-2.5 bg-[#0D0C0A] border border-[#C69214]/30 shrink-0">
+                      {act.icon}
                     </div>
-                  ))}
+                    <h3 className="serif italic text-2xl font-bold text-[#E4E3E0] leading-snug">
+                      {act.title}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-[#A39E93] leading-relaxed mb-6">
+                    {act.description}
+                  </p>
+
+                  {/* Details Meta */}
+                  <div className="space-y-2 mb-6 text-xs text-[#E4E3E0] bg-[#0D0C0A]/60 p-4 border border-[#28241F]">
+                    <div className="flex items-center gap-2 text-[#C69214]">
+                      <Clock className="w-4 h-4 shrink-0" />
+                      <span className="font-semibold uppercase tracking-wider">{act.schedule}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-[#A39E93]">
+                      <MapPin className="w-4 h-4 shrink-0 text-[#B24227]" />
+                      <span>{act.location}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-[#A39E93]">
+                      <Award className="w-4 h-4 shrink-0 text-[#C69214]" />
+                      <span className="text-[#C69214] font-bold">{act.impact}</span>
+                    </div>
+                  </div>
+
+                  {/* Key Highlights */}
+                  <div className="space-y-1.5 mb-6">
+                    {act.keyHighlights.map((hl, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-xs text-[#A39E93]">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C69214] shrink-0" />
+                        <span>{hl}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Card CTA */}
-              <div className="pt-4 border-t border-[#28241F] flex items-center justify-between">
-                <button
-                  onClick={() => {
-                    const el = document.getElementById('donation-block');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="px-5 py-2 bg-[#C69214] text-[#0D0C0A] text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-md"
-                >
-                  Sponsor This Initiative
-                </button>
+                {/* Card CTA */}
+                <div className="pt-4 border-t border-[#28241F] flex items-center justify-between">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => {
+                      const el = document.getElementById('donation-block');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="px-5 py-2 bg-[#C69214] text-[#0D0C0A] text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-md"
+                  >
+                    Sponsor This Initiative
+                  </motion.button>
 
-                <span className="text-[10px] text-[#A39E93] uppercase tracking-wider">
-                  Open to All
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+                  <span className="text-[10px] text-[#A39E93] uppercase tracking-wider">
+                    Open to All
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
       </section>
 

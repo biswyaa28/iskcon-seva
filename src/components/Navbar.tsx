@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
-import { Menu, X, Sparkles, HeartHandshake, LogIn, BookOpen } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Menu, X, HeartHandshake } from 'lucide-react';
 
 interface NavbarProps {
   activeTab?: string;
   onNavigate?: (tab: string) => void;
-  onOpenLogin?: () => void;
   onOpenSeva?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeTab = 'home',
   onNavigate,
-  onOpenLogin,
   onOpenSeva,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Us' },
-    { id: 'objectives', label: 'Objectives' },
     { id: 'activities', label: 'Activities' },
     { id: 'schedule', label: 'Schedule' },
-    { id: 'seva', label: 'Seva Impact' },
-    { id: 'wisdom', label: 'Wisdom' },
+    { id: 'blog', label: 'Blog' },
+    { id: 'about', label: 'About Us' },
   ];
 
   const handleNav = (id: string) => {
@@ -40,9 +37,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => handleNav('home')}
           className="flex items-center gap-3 group text-left focus:outline-none"
         >
-          <div className="w-10 h-10 bg-[#C69214] rounded-full flex items-center justify-center text-[#0D0C0A] font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+          <motion.div 
+            whileHover={{ scale: 1.08, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-10 h-10 bg-[#C69214] rounded-full flex items-center justify-center text-[#0D0C0A] font-bold text-xl shadow-md"
+          >
             K
-          </div>
+          </motion.div>
           <div className="flex flex-col">
             <span className="serif italic font-bold text-lg sm:text-xl text-[#C69214] group-hover:text-[#F4EFE6] transition-colors">
               Science of Krishna
@@ -54,20 +55,27 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 bg-[#1A1815]/80 px-6 py-2.5 rounded-full border border-[#C69214]/30">
+        <nav className="hidden md:flex items-center gap-8 bg-[#1A1815]/80 px-6 py-2.5 rounded-full border border-[#C69214]/30 relative">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => handleNav(item.id)}
-                className={`text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-200 ${
+                className={`text-xs font-semibold uppercase tracking-[0.18em] relative py-1 transition-colors duration-200 ${
                   isActive
-                    ? 'text-[#C69214] font-bold border-b-2 border-[#C69214] pb-0.5'
+                    ? 'text-[#C69214] font-bold'
                     : 'text-[#C69214]/70 hover:text-[#C69214]'
                 }`}
               >
-                {item.label}
+                <span>{item.label}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="navbar-underline"
+                    className="absolute left-0 right-0 bottom-0 h-[2px] bg-[#C69214]"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
               </button>
             );
           })}
@@ -75,21 +83,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Desktop Action Buttons */}
         <div className="hidden lg:flex items-center gap-3">
-          <button
-            onClick={onOpenLogin}
-            className="px-4 py-2 border border-[#C69214] text-[#C69214] text-xs font-bold uppercase tracking-widest hover:bg-[#C69214] hover:text-[#0D0C0A] transition-all duration-200 flex items-center gap-2"
-          >
-            <LogIn className="w-3.5 h-3.5" />
-            <span>Portal Login</span>
-          </button>
-
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={onOpenSeva}
-            className="px-5 py-2 bg-[#B24227] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#D85436] transition-all duration-300 shadow-md flex items-center gap-1.5"
+            className="px-5 py-2 bg-[#B24227] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#D85436] transition-colors duration-300 shadow-md flex items-center gap-1.5"
           >
             <HeartHandshake className="w-4 h-4" />
             <span>Contribute Seva</span>
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile Hamburger Toggle */}
@@ -105,49 +107,46 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#1A1815] border-b border-[#C69214]/30 px-6 py-6 space-y-4">
-          <div className="flex flex-col gap-3">
-            {navItems.map((item) => (
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="lg:hidden bg-[#1A1815] border-b border-[#C69214]/30 px-6 py-6 space-y-4 overflow-hidden"
+          >
+            <div className="flex flex-col gap-3">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleNav(item.id)}
+                  className={`text-left text-sm font-bold uppercase tracking-widest py-2 px-3 rounded-md transition-colors ${
+                    activeTab === item.id
+                      ? 'bg-[#C69214] text-[#0D0C0A]'
+                      : 'text-[#E4E3E0] hover:bg-[#28241F] hover:text-[#C69214]'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="pt-4 border-t border-[#28241F] flex flex-col gap-3">
               <button
-                key={item.id}
-                onClick={() => handleNav(item.id)}
-                className={`text-left text-sm font-bold uppercase tracking-widest py-2 px-3 rounded-md transition-colors ${
-                  activeTab === item.id
-                    ? 'bg-[#C69214] text-[#0D0C0A]'
-                    : 'text-[#E4E3E0] hover:bg-[#28241F] hover:text-[#C69214]'
-                }`}
+                onClick={() => {
+                  onOpenSeva?.();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full py-2.5 bg-[#B24227] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#D85436] transition-all flex items-center justify-center gap-2"
               >
-                {item.label}
+                <HeartHandshake className="w-4 h-4" />
+                <span>Contribute Seva</span>
               </button>
-            ))}
-          </div>
-
-          <div className="pt-4 border-t border-[#28241F] flex flex-col gap-3">
-            <button
-              onClick={() => {
-                onOpenLogin?.();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full py-2.5 border border-[#C69214] text-[#C69214] text-xs font-bold uppercase tracking-widest hover:bg-[#C69214] hover:text-[#0D0C0A] transition-all flex items-center justify-center gap-2"
-            >
-              <LogIn className="w-4 h-4" />
-              <span>Portal Login</span>
-            </button>
-
-            <button
-              onClick={() => {
-                onOpenSeva?.();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full py-2.5 bg-[#B24227] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#D85436] transition-all flex items-center justify-center gap-2"
-            >
-              <HeartHandshake className="w-4 h-4" />
-              <span>Contribute Seva</span>
-            </button>
-          </div>
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

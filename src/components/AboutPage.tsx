@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   BookOpen, 
   Utensils, 
@@ -19,10 +20,10 @@ import {
 
 interface AboutPageProps {
   onOpenSeva?: () => void;
-  onOpenLogin?: () => void;
+  onNavigate?: (tab: string) => void;
 }
 
-export const AboutPage: React.FC<AboutPageProps> = ({ onOpenSeva, onOpenLogin }) => {
+export const AboutPage: React.FC<AboutPageProps> = ({ onOpenSeva, onNavigate }) => {
   const [selectedObjective, setSelectedObjective] = useState<ObjectiveCard | null>(null);
 
   interface ObjectiveCard {
@@ -181,10 +182,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenSeva, onOpenLogin })
             </button>
 
             <button
-              onClick={onOpenLogin}
+              onClick={() => onNavigate?.('schedule')}
               className="px-8 py-3.5 bg-[#1A1815] hover:bg-[#C69214] hover:text-[#0D0C0A] text-[#C69214] border border-[#C69214] font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center gap-2 shadow-md"
             >
-              <span>Join Our Sangha</span>
+              <span>Explore Schedule</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -275,10 +276,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenSeva, onOpenLogin })
         {/* 6-Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {objectives.map((obj) => (
-            <div
+            <motion.div
+              whileHover={{ scale: 1.02, y: -4 }}
+              whileTap={{ scale: 0.98 }}
               key={obj.id}
               onClick={() => setSelectedObjective(obj)}
-              className="bg-[#1A1815] gold-border border-t-2 border border-[#C69214]/20 p-7 flex flex-col justify-between group hover:-translate-y-1.5 transition-all duration-300 cursor-pointer shadow-lg relative"
+              className="bg-[#1A1815] gold-border border-t-2 border border-[#C69214]/20 p-7 flex flex-col justify-between group transition-all duration-300 cursor-pointer shadow-lg relative"
             >
               <div>
                 {/* Header Row: Icon & Badge */}
@@ -317,88 +320,105 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenSeva, onOpenLogin })
                   Read More
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
       </section>
 
       {/* Modal Overlay for Objective Details */}
-      {selectedObjective && (
-        <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="bg-[#1A1815] border-2 border-[#C69214] p-6 sm:p-10 max-w-2xl w-full relative shadow-2xl max-h-[90vh] overflow-y-auto">
-            
-            <button
-              onClick={() => setSelectedObjective(null)}
-              className="absolute top-4 right-4 text-[#A39E93] hover:text-white p-2"
-              aria-label="Close detail modal"
+      <AnimatePresence>
+        {selectedObjective && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4"
+          >
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ duration: 0.25 }}
+              className="bg-[#1A1815] border-2 border-[#C69214] p-6 sm:p-10 max-w-2xl w-full relative shadow-2xl max-h-[90vh] overflow-y-auto"
             >
-              <X className="w-6 h-6" />
-            </button>
-
-            <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-[#0D0C0A] border border-[#C69214]/40">
-                {selectedObjective.icon}
-              </div>
-              <div>
-                <span className="text-xs text-[#C69214] uppercase tracking-widest font-bold block">
-                  {selectedObjective.sanskritName}
-                </span>
-                <h3 className="serif italic text-2xl sm:text-3xl font-bold text-[#E4E3E0]">
-                  {selectedObjective.title}
-                </h3>
-              </div>
-            </div>
-
-            <p className="text-sm text-[#E4E3E0]/90 leading-relaxed mb-6 border-l-2 border-[#C69214] pl-4 italic">
-              {selectedObjective.fullDesc}
-            </p>
-
-            {/* Impact Metric Banner */}
-            <div className="p-4 bg-[#0D0C0A] border border-[#C69214]/30 mb-6 flex items-center gap-3">
-              <Award className="w-6 h-6 text-[#C69214] shrink-0" />
-              <div>
-                <span className="text-[10px] text-[#A39E93] uppercase tracking-wider block">Key Benchmark</span>
-                <span className="text-sm font-bold text-[#C69214]">{selectedObjective.impactMetric}</span>
-              </div>
-            </div>
-
-            {/* Program Highlights */}
-            <div className="mb-8 space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#E4E3E0] mb-3">
-                Core Sub-Programs:
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {selectedObjective.keyPrograms.map((prog, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-xs text-[#E4E3E0]/80 bg-[#0D0C0A]/60 p-2 border border-[#28241F]">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C69214] shrink-0" />
-                    <span>{prog}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#28241F]">
-              <button
-                onClick={() => {
-                  setSelectedObjective(null);
-                  onOpenSeva?.();
-                }}
-                className="px-6 py-2.5 bg-[#B24227] hover:bg-[#D85436] text-white text-xs font-bold uppercase tracking-widest transition-all"
-              >
-                Sponsor This Seva
-              </button>
+              
               <button
                 onClick={() => setSelectedObjective(null)}
-                className="px-6 py-2.5 border border-[#C69214] text-[#C69214] hover:bg-[#C69214] hover:text-[#0D0C0A] text-xs font-bold uppercase tracking-widest transition-all"
+                className="absolute top-4 right-4 text-[#A39E93] hover:text-white p-2"
+                aria-label="Close detail modal"
               >
-                Close Window
+                <X className="w-6 h-6" />
               </button>
-            </div>
 
-          </div>
-        </div>
-      )}
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 bg-[#0D0C0A] border border-[#C69214]/40">
+                  {selectedObjective.icon}
+                </div>
+                <div>
+                  <span className="text-xs text-[#C69214] uppercase tracking-widest font-bold block">
+                    {selectedObjective.sanskritName}
+                  </span>
+                  <h3 className="serif italic text-2xl sm:text-3xl font-bold text-[#E4E3E0]">
+                    {selectedObjective.title}
+                  </h3>
+                </div>
+              </div>
+
+              <p className="text-sm text-[#E4E3E0]/90 leading-relaxed mb-6 border-l-2 border-[#C69214] pl-4 italic">
+                {selectedObjective.fullDesc}
+              </p>
+
+              {/* Impact Metric Banner */}
+              <div className="p-4 bg-[#0D0C0A] border border-[#C69214]/30 mb-6 flex items-center gap-3">
+                <Award className="w-6 h-6 text-[#C69214] shrink-0" />
+                <div>
+                  <span className="text-[10px] text-[#A39E93] uppercase tracking-wider block">Key Benchmark</span>
+                  <span className="text-sm font-bold text-[#C69214]">{selectedObjective.impactMetric}</span>
+                </div>
+              </div>
+
+              {/* Program Highlights */}
+              <div className="mb-8 space-y-2">
+                <h4 className="text-xs font-bold uppercase tracking-widest text-[#E4E3E0] mb-3">
+                  Core Sub-Programs:
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {selectedObjective.keyPrograms.map((prog, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-xs text-[#E4E3E0]/80 bg-[#0D0C0A]/60 p-2 border border-[#28241F]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C69214] shrink-0" />
+                      <span>{prog}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#28241F]">
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => {
+                    setSelectedObjective(null);
+                    onOpenSeva?.();
+                  }}
+                  className="px-6 py-2.5 bg-[#B24227] hover:bg-[#D85436] text-white text-xs font-bold uppercase tracking-widest transition-all"
+                >
+                  Sponsor This Seva
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => setSelectedObjective(null)}
+                  className="px-6 py-2.5 border border-[#C69214] text-[#C69214] hover:bg-[#C69214] hover:text-[#0D0C0A] text-xs font-bold uppercase tracking-widest transition-all"
+                >
+                  Close Window
+                </motion.button>
+              </div>
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );

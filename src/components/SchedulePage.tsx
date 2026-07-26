@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   Calendar as CalendarIcon, 
   Clock, 
@@ -212,7 +213,9 @@ export const SchedulePage: React.FC = () => {
               <span>Filter:</span>
             </span>
             {categories.map((cat) => (
-              <button
+              <motion.button
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-all border ${
@@ -222,7 +225,7 @@ export const SchedulePage: React.FC = () => {
                 }`}
               >
                 {cat}
-              </button>
+              </motion.button>
             ))}
           </div>
 

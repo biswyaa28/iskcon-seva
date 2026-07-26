@@ -67,13 +67,13 @@ export const CORE_PILLARS: CorePillar[] = [
   },
   {
     id: 'ethical-leadership',
-    title: 'Ethical Leadership & Conscious AI',
+    title: 'Ethical Leadership & Conscious Technology',
     sanskritTerm: 'Dharma & Karma',
     category: 'Ethics',
     icon: 'balance',
-    shortDesc: 'Guiding artificial intelligence, technology development, and executive leadership with Dharmic principles.',
-    fullDesc: 'As artificial intelligence and automated decision systems reshape human society, technology without moral grounding risks exponential harm. Dharmic ethics offer timeless governance models based on truthfulness (Satya), self-restraint (Tapa), cleanliness (Saucha), and compassion (Daya).',
-    scientificConcept: 'AI Alignment, Systemic Ethics & Complexity Theory',
+    shortDesc: 'Guiding technological innovations, digital systems, and executive leadership with Dharmic principles.',
+    fullDesc: 'As automated decision systems and digital innovations reshape human society, technology without moral grounding risks exponential harm. Dharmic ethics offer timeless governance models based on truthfulness (Satya), self-restraint (Tapa), cleanliness (Saucha), and compassion (Daya).',
+    scientificConcept: 'Technology Alignment, Systemic Ethics & Complexity Theory',
     scripturalRef: 'Bhagavad Gita 3.21 & Mahabharata Shanti Parva',
     keyInsights: [
       'Leaders act as "Yad yad acharati shreshthas" — standard-setters whose ethical frequency ripples through society.',
