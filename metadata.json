@@ -1,0 +1,6 @@
+{
+  "name": "Science of Krishna",
+  "description": "A modern spiritual and scientific platform bridging Vedic wisdom, quantum consciousness, Bhagavad Gita philosophy, interactive Seva impact, and community activities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

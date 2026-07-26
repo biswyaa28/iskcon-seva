@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-playfair: 'Playfair Display', Georgia, serif;
+    --font-cinzel: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-outfit: 'Outfit', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #0D0C0A;
+    color: #E4E3E0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .serif, .font-serif-display {
+    font-family: var(--font-playfair);
+  }
+
+  .font-cinzel {
+    font-family: var(--font-cinzel);
+  }
+}
+
+.serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0C0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #28241F;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C69214;
+}
+
+/* Glow & Border Utilities from Bold Typography theme */
+.rust-glow {
+  box-shadow: 0 0 20px rgba(178, 66, 39, 0.2);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(198, 146, 20, 0.25);
+}
+
+.terracotta-glow {
+  box-shadow: 0 0 25px rgba(178, 66, 39, 0.25);
+}
+
+.gold-border {
+  border-color: rgba(198, 146, 20, 0.3);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F9E2AF 0%, #C69214 50%, #946907 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.terracotta-gradient-text {
+  background: linear-gradient(135deg, #FF9E85 0%, #B24227 50%, #7D2813 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.obsidian-card {
+  background: #1A1815;
+  border: 1px solid rgba(198, 146, 20, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.obsidian-card:hover {
+  border-color: rgba(198, 146, 20, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(198, 146, 20, 0.2);
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.08); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
