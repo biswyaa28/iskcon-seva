@@ -1,0 +1,13 @@
+{
+  "hosts": [
+    "www.google.com",
+    "connect.facebook.net",
+    "www.googletagmanager.com",
+    "fonts.gstatic.com",
+    "stats.g.doubleclick.net",
+    "www.google.co.in",
+    "analytics.google.com",
+    "www.gstatic.com"
+  ],
+  "webfont_css_to_selfhost": []
+}

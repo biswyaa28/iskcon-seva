@@ -1,0 +1,30 @@
+# Byte-compiled / build artefacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Generated at build time; regenerate with `make build`
+site/assets/
+
+# Local scratch space: screenshots, archived tooling, experiments
+.tmp/
+.playwright-mcp/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

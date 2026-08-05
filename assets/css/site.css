@@ -1,0 +1,262 @@
+/* Science of Krishna — supplemental styles.
+   Uses only the theme's existing design tokens so new UI matches the mirror. */
+
+/* ---------------------------------------------------------------- contact -- */
+.sok-contact-form{max-width:560px}
+.sok-field{margin-bottom:20px;display:flex;flex-direction:column}
+.sok-field label{
+  font-family:var(--body_typography-font-family);
+  font-size:15px;letter-spacing:.4px;
+  color:var(--awb-custom_color_4);
+  margin-bottom:7px;
+}
+.sok-field label span{color:var(--primary_color)}
+.sok-field input,
+.sok-field select,
+.sok-field textarea{
+  font-family:var(--body_typography-font-family);
+  font-size:16px;
+  color:var(--awb-custom_color_4);
+  background:#fff8f0;
+  border:1px solid rgba(44,36,22,.2);
+  border-radius:3px;
+  padding:11px 13px;
+  width:100%;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.sok-field textarea{resize:vertical;min-height:130px;line-height:1.6}
+.sok-field select{appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--awb-custom_color_2) 50%),
+                   linear-gradient(135deg,var(--awb-custom_color_2) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:38px}
+.sok-field input:hover,
+.sok-field select:hover,
+.sok-field textarea:hover{border-color:var(--awb-custom_color_2)}
+.sok-field input:focus,
+.sok-field select:focus,
+.sok-field textarea:focus{
+  outline:none;
+  border-color:var(--awb-custom_color_3);
+  box-shadow:0 0 0 3px rgba(212,168,83,.22);
+}
+.sok-field input:invalid:not(:placeholder-shown),
+.sok-field textarea:invalid:not(:placeholder-shown){border-color:rgba(181,101,29,.65)}
+
+.sok-submit{
+  font-family:var(--body_typography-font-family);
+  font-size:16px;letter-spacing:.5px;
+  color:var(--awb-custom_color_1);
+  background:var(--primary_color);
+  border:2px solid var(--primary_color);
+  border-radius:4px;
+  padding:12px 30px;
+  cursor:pointer;
+  transition:background-color .2s ease,border-color .2s ease;
+}
+.sok-submit:hover{background:var(--awb-custom_color_6);border-color:var(--awb-custom_color_6)}
+.sok-submit:focus-visible{outline:3px solid rgba(212,168,83,.55);outline-offset:2px}
+.sok-formnote{margin-top:14px;font-size:14px;color:rgba(44,36,22,.55)}
+
+/* ------------------------------------------------------------ card layout -- */
+/* Equal-height cards laid out on a real grid, so rows align regardless of
+   how much copy each card carries.  Scoped to .sok-boxes so the mirrored
+   theme's own content boxes are untouched. */
+.sok-boxes{display:grid;gap:24px;margin-bottom:0}
+.sok-boxes--2{grid-template-columns:repeat(2,1fr)}
+.sok-boxes--3{grid-template-columns:repeat(3,1fr)}
+.sok-boxes .content-box-column{
+  display:flex;width:auto;float:none;margin:0;padding:0;
+}
+.sok-boxes .content-box-wrapper{
+  display:flex;flex-direction:column;width:100%;
+  padding:30px 28px;
+  border-radius:3px;
+  box-shadow:0 0 0 1px rgba(44,36,22,.1) inset;
+}
+.sok-boxes .heading{margin-bottom:14px}
+.sok-boxes .content-container{flex:1 1 auto}
+.sok-boxes .fusion-read-more{
+  margin-top:18px;align-self:flex-start;
+}
+.sok-boxes .fusion-read-more:after{transition:transform .2s ease}
+.sok-boxes .content-box-wrapper:hover .fusion-read-more:after{transform:translateX(3px)}
+
+@media (max-width:1024px){
+  .sok-boxes--3{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:800px){
+  .sok-boxes--2,.sok-boxes--3{grid-template-columns:1fr}
+}
+
+/* ------------------------------------------------------------- checklist --- */
+/* Keep the icon on the same baseline as its text. */
+.sok-checklist{margin:0;padding:0;list-style:none}
+.sok-checklist .fusion-li-item{
+  display:flex;align-items:flex-start;gap:12px;
+  margin-bottom:16px;
+}
+.sok-checklist .fusion-li-item .icon-wrapper{
+  flex:0 0 auto;margin:0;position:static;
+  line-height:1.6;
+}
+.sok-checklist .fusion-li-item-content{margin:0;flex:1 1 auto;line-height:1.6}
+
+/* --------------------------------------------------------------- a11y ------ */
+.sok-skip:focus{
+  position:fixed;top:10px;left:10px;z-index:99999;
+  background:var(--awb-custom_color_4);color:var(--awb-custom_color_1);
+  padding:10px 18px;border-radius:4px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+
+/* ============================================================== library ==== */
+/* Breadcrumb ---------------------------------------------------------------- */
+.sok-crumb{font-size:14px;color:rgba(44,36,22,.5);margin-bottom:18px}
+.sok-crumb a{color:var(--awb-custom_color_6)}
+.sok-crumb a:hover{color:var(--primary_color)}
+.sok-crumb__sep{margin:0 8px;color:var(--awb-custom_color_2)}
+
+/* Scripture verse block ------------------------------------------------------
+   Set in the heading face, indented and rule-marked, so quoted scripture is
+   never confused with the foundation's own commentary. */
+.sok-verse{
+  margin:26px 0;
+  padding:26px 30px;
+  background:#fff8f0;
+  border-left:3px solid var(--awb-custom_color_3);
+  border-radius:0 3px 3px 0;
+  box-shadow:0 0 0 1px rgba(44,36,22,.08) inset;
+}
+.sok-verse__text{
+  font-family:"Cormorant Garamond",Garamond,serif;
+  font-size:21px;line-height:1.75;
+  color:var(--awb-custom_color_4);
+  margin:0;
+}
+.sok-verse__cite{
+  display:block;margin-top:16px;
+  font-family:var(--body_typography-font-family);
+  font-style:normal;font-size:14px;letter-spacing:.5px;
+  text-transform:uppercase;
+  color:var(--awb-custom_color_2);
+}
+.sok-verse__note{
+  margin:-8px 0 26px;padding-left:33px;
+  font-size:15px;font-style:italic;
+  color:rgba(44,36,22,.6);
+}
+
+/* Article body -------------------------------------------------------------- */
+.sok-article{max-width:720px;margin:0 auto}
+.sok-article h2{
+  font-family:"Cormorant Garamond",Garamond,serif;
+  font-size:27px;line-height:1.3;
+  color:var(--awb-custom_color_4);
+  margin:38px 0 12px;
+}
+.sok-article p{font-size:17px;line-height:1.75;color:rgba(44,36,22,.85);margin:0 0 16px}
+.sok-article em{color:var(--awb-custom_color_6);font-style:italic}
+.sok-article__standfirst{
+  font-size:20px;line-height:1.6;
+  color:rgba(44,36,22,.7);
+  font-style:italic;
+  margin-bottom:6px;
+}
+.sok-article__meta{
+  font-size:14px;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--awb-custom_color_2);
+  padding-bottom:22px;margin-bottom:8px;
+  border-bottom:1px solid rgba(44,36,22,.12);
+}
+.sok-article__note{
+  margin-top:40px;padding:18px 22px;
+  background:#ece4d4;border-radius:3px;
+  font-size:14px;line-height:1.65;color:rgba(44,36,22,.65);
+}
+.sok-article__note strong{color:var(--awb-custom_color_4)}
+
+/* Article cards ------------------------------------------------------------- */
+.sok-cardgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.sok-card{
+  display:flex;flex-direction:column;
+  padding:26px 26px 22px;
+  background:#fff8f0;
+  border-radius:3px;
+  box-shadow:0 0 0 1px rgba(44,36,22,.1) inset;
+  text-decoration:none;
+  transition:box-shadow .2s ease,transform .2s ease;
+}
+.sok-card:hover{
+  box-shadow:0 0 0 1px var(--awb-custom_color_3) inset,0 6px 18px rgba(44,36,22,.08);
+  transform:translateY(-2px);
+}
+.sok-card:focus-visible{outline:3px solid rgba(212,168,83,.6);outline-offset:2px}
+.sok-card__topic{
+  font-size:12px;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--awb-custom_color_6);margin-bottom:10px;
+}
+.sok-card__title{
+  font-family:"Cormorant Garamond",Garamond,serif;
+  font-size:23px;line-height:1.3;
+  color:var(--awb-custom_color_4);
+  margin:0 0 10px;
+}
+.sok-card__standfirst{
+  font-size:15px;line-height:1.6;
+  color:rgba(44,36,22,.7);
+  margin:0 0 16px;flex:1 1 auto;
+}
+.sok-card__meta{
+  font-size:13px;letter-spacing:.4px;
+  color:var(--awb-custom_color_2);
+}
+.sok-card[hidden]{display:none}
+
+/* Topic filter -------------------------------------------------------------- */
+.sok-filter{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:30px}
+.sok-filter__btn{
+  font-family:var(--body_typography-font-family);
+  font-size:15px;
+  color:var(--awb-custom_color_4);
+  background:transparent;
+  border:1px solid rgba(44,36,22,.2);
+  border-radius:3px;
+  padding:7px 16px;
+  cursor:pointer;
+  transition:background-color .18s ease,border-color .18s ease,color .18s ease;
+}
+.sok-filter__btn:hover{border-color:var(--awb-custom_color_3)}
+.sok-filter__btn:focus-visible{outline:3px solid rgba(212,168,83,.55);outline-offset:2px}
+.sok-filter__btn.is-active{
+  background:var(--awb-custom_color_4);
+  border-color:var(--awb-custom_color_4);
+  color:var(--awb-custom_color_1);
+}
+
+/* Prev/next ----------------------------------------------------------------- */
+.sok-pager{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  max-width:720px;margin:44px auto 0;
+  padding-top:24px;border-top:1px solid rgba(44,36,22,.12);
+}
+.sok-pager a{
+  font-size:15px;color:var(--awb-custom_color_6);
+  text-decoration:none;max-width:46%;
+}
+.sok-pager a:hover{color:var(--primary_color)}
+.sok-pager__label{
+  display:block;font-size:12px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--awb-custom_color_2);margin-bottom:4px;
+}
+
+@media (max-width:1024px){.sok-cardgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:800px){
+  .sok-cardgrid{grid-template-columns:1fr}
+  .sok-verse{padding:22px 20px}
+  .sok-verse__text{font-size:19px}
+  .sok-verse__note{padding-left:23px}
+}

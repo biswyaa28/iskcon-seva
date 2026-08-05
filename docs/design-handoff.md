@@ -1,0 +1,808 @@
+# mirror implementation handoff
+
+This archive is the source of truth for turning the design into production code. Start from `site/index.html`, then preserve the visual system, responsive behavior, and interactions found in the exported files.
+
+## Implementation target
+- Build production UI from the exported design, not a loose reinterpretation.
+- Preserve typography scale, spacing rhythm, color tokens, border radii, shadows, motion timing, and component states.
+- Replace static placeholders only when the target app has real data or functional equivalents.
+- Keep generated product UI free of Open Design chrome, preview labels, or design-process annotations.
+- Treat this handoff as a visual contract: if implementation choices conflict, match the exported pixels and behavior first, then refactor internals.
+
+## Source map
+- Primary entry: `site/index.html`
+- HTML screens detected: 1
+- Stylesheets detected: 108
+- Script/component files detected: 10
+- Supporting assets detected: 606
+
+## Responsive contract
+Validate the implementation across this 2025–2026 viewport matrix:
+- Mobile compact: 360×800
+- Mobile standard: 390×844
+- Mobile large: 430×932
+- Foldable / small tablet: 600×960
+- Tablet portrait: 820×1180
+- Tablet landscape: 1024×768
+- Laptop: 1366×768
+- Desktop: 1440×900
+- Wide desktop: 1920×1080
+
+For responsive web exports, treat these as a modern breakpoint system for one adaptive web experience, not three fixed screenshots. Do not split responsive web into unrelated native app screens unless the project explicitly includes native targets. Use semantic layout thresholds, fluid `clamp()` type/spacing, and container queries where component width matters more than viewport width. Preserve any CSS media queries, container queries, fluid `clamp()` scales, and layout changes already present in the exported files.
+
+## Design fidelity contract
+- Extract reusable tokens before writing components: background, surface, foreground, muted text, border, accent, radius, shadow, spacing, type scale, and motion duration/easing.
+- Map product screens, in-app modules/components, optional landing page, and optional OS widget surfaces before coding. Keep these surfaces separate in the target architecture.
+- Match layout geometry: max-widths, gutters, grid columns, card proportions, sticky/fixed elements, and viewport-specific navigation.
+- Preserve real copy, labels, and data shown in the export. Do not replace specific text with generic marketing filler.
+- Preserve interactive affordances: hover, focus, pressed, disabled, loading, validation, copy/share, tab/accordion, modal/sheet, and keyboard states where present.
+- Preserve accessibility semantics when converting: headings stay hierarchical, controls remain buttons/links/inputs, focus states stay visible.
+- Do not keep prototype-only annotations, frame labels, or Open Design chrome in the production UI.
+
+## CJX-ready UX contract
+- Use `DESIGN-MANIFEST.json` as the machine-readable map for screens, app modules, OS widgets, landing pages, tokens, interactions, and viewport checks.
+- Screen-file-first: when multiple user-facing surfaces exist, implement each HTML screen as its own route/file. Treat `index.html` as a launcher/overview when the manifest marks it that way, not as a combined final UI.
+- If `landing.html`, app screens, platform screens, or OS widget files exist, preserve those boundaries in the target app instead of merging them into one page.
+- A single self-contained `site/index.html` is acceptable only when the export truly contains one user-facing screen and its CSS/JS are structured enough to extract tokens, components, states, and behavior.
+- If separate `css/` or `js/` files exist, treat them as source of truth for token/component/interactions before porting to React, Vue, SwiftUI, Compose, or another target stack.
+- In-app modules/components are product UI blocks inside the app. OS widgets are home-screen/lock-screen/quick-access surfaces outside the app. Do not merge those concepts.
+
+## Color and brand contract
+- Use the exported design tokens and product/domain context as the color source of truth.
+- Do not introduce warm beige / cream / peach / pink / orange-brown background washes unless they are already explicit brand/reference colors in the export.
+- A stylesheet or design/token file was detected; inspect it for canonical color variables before choosing framework theme tokens.
+
+## Implementation sequence for AI coding tools
+1. Open `site/index.html` and `DESIGN-MANIFEST.json`; identify every screen file, launcher/overview file, app module, and interaction before coding.
+2. If multiple HTML screens exist, map them to separate routes/surfaces first; do not merge `landing.html`, product app screens, platform screens, or OS widgets into one route.
+3. Extract a token table from CSS/root styles and inline styles before building framework components.
+4. Build product screens and domain-specific in-app modules from largest layout regions down to controls; avoid starting with isolated atoms that lose spatial intent.
+5. Port responsive behavior across the modern viewport matrix and test each semantic breakpoint before cleanup.
+6. Port interactions and states, then replace static placeholders only with real app data or functional equivalents.
+7. Keep optional landing page and OS widget surfaces as separate surfaces if present.
+8. Compare final screenshots against the export at 360×800, 390×844, 430×932, 820×1180, 1024×768, 1366×768, 1440×900, and 1920×1080 before declaring done.
+
+## Entry points
+- `site/index.html`
+
+## Styles
+- `site/wp-content/cache/breeze-minification/css/breeze_about-us-1-969-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_about-us-1-969-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_about-us-1-969-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_about-us-1-969-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_about-us-1-969-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_about-us-1-969-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_about-us-1-969-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_about-us-1-969-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_about-us-1-969-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_audio-1-487-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_audio-1-487-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_audio-1-487-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_audio-1-487-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_audio-1-487-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_audio-1-487-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_audio-1-487-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_audio-1-487-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_audio-1-487-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_bhaktivinodainstitute-org-1-9-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_bhaktivinodainstitute-org-1-9-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_bhaktivinodainstitute-org-1-9-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_bhaktivinodainstitute-org-1-9-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_bhaktivinodainstitute-org-1-9-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_bhaktivinodainstitute-org-1-9-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_bhaktivinodainstitute-org-1-9-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_bhaktivinodainstitute-org-1-9-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_bhaktivinodainstitute-org-1-9-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_biographical-articles-1-11745-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_biographical-articles-1-11745-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_biographical-articles-1-11745-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_biographical-articles-1-11745-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_biographical-articles-1-11745-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_biographical-articles-1-11745-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_biographical-articles-1-11745-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_biographical-articles-1-11745-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_biographical-articles-1-11745-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_mission-statement-1-89-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_mission-statement-1-89-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_mission-statement-1-89-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_mission-statement-1-89-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_mission-statement-1-89-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_mission-statement-1-89-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_mission-statement-1-89-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_mission-statement-1-89-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_mission-statement-1-89-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_photos-of-bhaktivinoda-thakura-1-324-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_photos-of-bhaktivinoda-thakura-1-324-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_photos-of-bhaktivinoda-thakura-1-324-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_photos-of-bhaktivinoda-thakura-1-324-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_photos-of-bhaktivinoda-thakura-1-324-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_photos-of-bhaktivinoda-thakura-1-324-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_photos-of-bhaktivinoda-thakura-1-324-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_photos-of-bhaktivinoda-thakura-1-324-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_photos-of-bhaktivinoda-thakura-1-324-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_tributes-1-331-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_tributes-1-331-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_tributes-1-331-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_tributes-1-331-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_tributes-1-331-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_tributes-1-331-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_tributes-1-331-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_tributes-1-331-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_tributes-1-331-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-articles-1-3717-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-articles-1-3717-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-articles-1-3717-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-articles-1-3717-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-articles-1-3717-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-articles-1-3717-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-articles-1-3717-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-articles-1-3717-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-articles-1-3717-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-books-1-124-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-books-1-124-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-books-1-124-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-books-1-124-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-books-1-124-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-books-1-124-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-books-1-124-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-books-1-124-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-books-1-124-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-quotes-1-329-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-quotes-1-329-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-quotes-1-329-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-quotes-1-329-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-quotes-1-329-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-quotes-1-329-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-quotes-1-329-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-quotes-1-329-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-quotes-1-329-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-songs-poems-1-318-assets-css-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-songs-poems-1-318-button-css-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-songs-poems-1-318-fusion-core-css-comment-form.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-songs-poems-1-318-language-switchers-legacy-list-vertical-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-songs-poems-1-318-language-switchers-menu-item-style.min.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-songs-poems-1-318-player-build-style.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-songs-poems-1-318-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-songs-poems-1-318-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css`
+- `site/wp-content/cache/breeze-minification/css/breeze_writings-songs-poems-1-318-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css`
+
+## Scripts/components
+- `site/wp-content/plugins/copy-the-code/assets/frontend/js/global-injector.js`
+- `site/wp-content/plugins/copy-the-code/assets/frontend/js/lib/ctc.js`
+- `site/wp-content/plugins/wordpress-popular-posts/assets/js/wpp.min.js`
+- `site/wp-content/uploads/fusion-scripts/21a0c7a6d5c461bac84382f10d8d52e5.min.js`
+- `site/wp-content/uploads/fusion-scripts/3e45c080e2961e94713150f26bc215d6.min.js`
+- `site/wp-content/uploads/fusion-scripts/4db66a412877abf7443f9cc1e4c40615.min.js`
+- `site/wp-content/uploads/fusion-scripts/a56bb9cea55d37d7871ac1ce0d223da4.min.js`
+- `site/wp-content/uploads/fusion-scripts/bb3d8651e3f20541af2fe3622f403fa1.min.js`
+- `site/wp-content/uploads/fusion-scripts/d158cec7cb5568861c361309f802804d.min.js`
+- `site/wp-includes/js/jquery/jquery.min.js`
+
+## Assets and supporting files
+- `mirror-manifest.json`
+- `own-asset-urls.txt`
+- `site/about-us`
+- `site/audio`
+- `site/biographical-articles`
+- `site/contact-us`
+- `site/mission-statement`
+- `site/photos-of-bhaktivinoda-thakura`
+- `site/tributes`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/closedhand.cur`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/alert.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/back-50.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/back-vertical-50.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/caption-bg.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/close-25.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/close-50.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/forward-50.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/forward-vertical-50.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/pause-25.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/pause-50.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/play-25.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/play-50.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/preloader.gif`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/resize-25.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/resize-50.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/iLightbox/mac-skin/thumb-overlay-play.png`
+- `site/wp-content/plugins/fusion-builder/assets/images/mejs-controls-dark.svg`
+- `site/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png`
+- `site/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png`
+- `site/wp-content/themes/Avada/assets/images/patterns/pattern1.png`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-brands-400.eot`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-brands-400.svg`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-brands-400.ttf`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-brands-400.woff`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-brands-400.woff2`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-regular-400.eot`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-regular-400.svg`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-regular-400.ttf`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-regular-400.woff`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-regular-400.woff2`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-solid-900.eot`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-solid-900.svg`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-solid-900.ttf`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-solid-900.woff`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-solid-900.woff2`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/icomoon/awb-icons.svg`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/icomoon/awb-icons.ttf`
+- `site/wp-content/themes/Avada/includes/lib/assets/fonts/icomoon/awb-icons.woff`
+- `site/wp-content/uploads/2020/05/Shri-Chaitanya-His-Life-and-Precepts-600x351.jpg`
+- `site/wp-content/uploads/2020/06/1887-BVT-BSST-child.jpg`
+- `site/wp-content/uploads/2020/06/A91-BT.jpg`
+- `site/wp-content/uploads/2020/06/Bhagavata-600x351.jpg`
+- `site/wp-content/uploads/2020/06/Bhagavati-Devi-1.jpg`
+- `site/wp-content/uploads/2020/06/Bhagavati-Devi-2.jpg`
+- `site/wp-content/uploads/2020/06/Bhagavati-Devi-3-1200x1747.jpg`
+- `site/wp-content/uploads/2020/06/Bhagavati-Devi-3-200x291.jpg`
+- `site/wp-content/uploads/2020/06/Bhagavati-Devi-3-400x582.jpg`
+- `site/wp-content/uploads/2020/06/Bhagavati-Devi-3-600x874.jpg`
+- `site/wp-content/uploads/2020/06/Bhagavati-Devi-3-800x1165.jpg`
+- `site/wp-content/uploads/2020/06/Bhagavati-Devi-3.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_03.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_04.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_08.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_11.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_16.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_18-1200x1646.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_18-200x274.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_18-400x549.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_18-600x823.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_18-800x1097.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_18.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_22.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_23.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_25.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_26.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda_28.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda-Caturmasya.jpg`
+- `site/wp-content/uploads/2020/06/Bhaktivinoda-Institute-1.jpg`
+- `site/wp-content/uploads/2020/06/bhaktivinoda.jpg`
+- `site/wp-content/uploads/2020/06/bhaktivinode-1200x1561.jpg`
+- `site/wp-content/uploads/2020/06/bhaktivinode-200x260.jpg`
+- `site/wp-content/uploads/2020/06/bhaktivinode-400x520.jpg`
+- `site/wp-content/uploads/2020/06/bhaktivinode-600x780.jpg`
+- `site/wp-content/uploads/2020/06/bhaktivinode-800x1041.jpg`
+- `site/wp-content/uploads/2020/06/bhaktivinode.jpg`
+- `site/wp-content/uploads/2020/06/BVT-1911.jpg`
+- `site/wp-content/uploads/2020/06/BVT-as-Magistrate-3.jpg`
+- `site/wp-content/uploads/2020/06/BVT-as-magsitrate.jpg`
+- `site/wp-content/uploads/2020/06/BVT-BSST-Child-2.jpg`
+- `site/wp-content/uploads/2020/06/BVT-in-suit.jpg`
+- `site/wp-content/uploads/2020/06/BVT-with-child.jpg`
+- `site/wp-content/uploads/2020/06/BVT-with-son.jpg`
+- `site/wp-content/uploads/2020/06/BVT-Young-man-1200x1408.jpg`
+- `site/wp-content/uploads/2020/06/BVT-Young-man-200x235.jpg`
+- `site/wp-content/uploads/2020/06/BVT-Young-man-400x469.jpg`
+- `site/wp-content/uploads/2020/06/BVT-Young-man-600x704.jpg`
+- `site/wp-content/uploads/2020/06/BVT-Young-man-800x939.jpg`
+- `site/wp-content/uploads/2020/06/BVT-Young-man.jpg`
+- `site/wp-content/uploads/2020/06/deliberation-methodology-sadhu-sanga-320x202.jpg`
+- `site/wp-content/uploads/2020/06/deliberation-methodology-sadhu-sanga-700x441.jpg`
+- `site/wp-content/uploads/2020/06/GV.jpg`
+- `site/wp-content/uploads/2020/06/SST-08-1200x2027.jpg`
+- `site/wp-content/uploads/2020/06/SST-08-200x338.jpg`
+- `site/wp-content/uploads/2020/06/SST-08-400x676.jpg`
+- `site/wp-content/uploads/2020/06/SST-08-600x1014.jpg`
+- `site/wp-content/uploads/2020/06/SST-08-800x1351.jpg`
+- `site/wp-content/uploads/2020/06/SST-08.jpg`
+- `site/wp-content/uploads/2020/06/SST-13.jpg`
+- `site/wp-content/uploads/2020/06/SST-22-1200x1682.jpg`
+- `site/wp-content/uploads/2020/06/SST-22-200x280.jpg`
+- `site/wp-content/uploads/2020/06/SST-22-400x561.jpg`
+- `site/wp-content/uploads/2020/06/SST-22-600x841.jpg`
+- `site/wp-content/uploads/2020/06/SST-22-800x1121.jpg`
+- `site/wp-content/uploads/2020/06/SST-22.jpg`
+- `site/wp-content/uploads/2020/06/SST-25.jpg`
+- `site/wp-content/uploads/2020/06/SST-67.jpg`
+- `site/wp-content/uploads/2020/06/SST-68.jpg`
+- `site/wp-content/uploads/2020/06/ST14.jpg`
+- `site/wp-content/uploads/2020/06/Vaisnava-Ninda-600x321.jpg`
+- `site/wp-content/uploads/2020/07/Atyahara-600x351.jpg`
+- `site/wp-content/uploads/2020/08/bhaktivinoda-viraha-guna-gana-1024x599.jpg`
+- `site/wp-content/uploads/2020/08/Favicon-200x201.png`
+- `site/wp-content/uploads/2020/08/Favicon-45x45.png`
+- `site/wp-content/uploads/2020/08/srimad-bhaktivinoda-viraha-dasakam-1024x599.jpg`
+- `site/wp-content/uploads/2020/08/the-appearance-day-of-bhaktivinoda-thakura-by-srila-ac-bhaktivedanta-swami-prabhupada-1024x599.jpg`
+- `site/wp-content/uploads/2021/03/Saranagati.jpg`
+- `site/wp-content/uploads/2021/05/Bra_CC_84hman_CC_A3a-u-Vais_CC_A3n_CC_A3ava-_E2_80_93-Ubhaye-i-Sampu_CC_84rn_CC_A3a-Vaidika-1-600x376.jpg`
+- `site/wp-content/uploads/2021/05/Bra_hman_a-u-Vais_n_ava-_-Ubhaye-i-Sampu_rn_a-Vaidika-1-600x376.jpg`
+- `site/wp-content/uploads/2022/01/A-Glimpse-into-the-life-of-Bhaktivinoda-1024x599.jpg`
+- `site/wp-content/uploads/2022/02/a-glimpse-into-the-life-of-bhaktivinoda-thakura-1024x599.jpg`
+- `site/wp-content/uploads/2022/05/Artboard-2-copy-1.png`
+- `site/wp-content/uploads/2022/05/Artboard-2-copy.png`
+- `site/wp-content/uploads/2024/07/a-final-darsana-of-the-thakura-1024x599.jpg`
+- `site/wp-content/uploads/2024/07/dasa-mula-ten-foundational-principles-600x351.jpeg`
+- `site/wp-content/uploads/2024/07/eulogy-for-bhaktivinoda-thakura-by-bhaktisiddhanta-saraswati-1024x599.jpeg`
+- `site/wp-content/uploads/2024/07/remembrances-of-srimad-bhakti-pradipa-tirtha-maharaja-1024x599.jpg`
+- `site/wp-content/uploads/2024/07/remembrances-of-sripada-paramananda-vidyaratna-prabhu-1024x599.jpg`
+- `site/wp-content/uploads/2024/07/samadhi-observance-1024x599.jpg`
+- `site/wp-content/uploads/2024/07/srila-bhaktivinoda-thakura-at-the-bhajana-kutira-of-srila-jagannatha-dasa-babaji-1024x599.jpg`
+- `site/wp-content/uploads/2024/07/the-avatara-bisakisen-1024x599.jpg`
+- `site/wp-content/uploads/2024/07/the-disappearance-of-srila-bhaktivinoda-thakura-1024x599.jpg`
+- `site/wp-content/uploads/2024/07/viraha-gitiki-a-song-of-separation-puri-maharaja-1024x599.jpg`
+- `site/wp-content/uploads/2025/09/srila-bhaktivinoda-in-gaudacala-1024x599.jpg`
+- `site/wp-content/uploads/2025/11/srimad-bhaktivinoda-carita-1200x702.jpg`
+- `site/wp-content/uploads/2025/11/srimad-bhaktivinoda-carita-200x117.jpg`
+- `site/wp-content/uploads/2025/11/srimad-bhaktivinoda-carita-400x234.jpg`
+- `site/wp-content/uploads/2025/11/srimad-bhaktivinoda-carita-600x351.jpg`
+- `site/wp-content/uploads/2025/11/srimad-bhaktivinoda-carita-800x468.jpg`
+- `site/wp-content/uploads/2025/11/srimad-bhaktivinoda-carita.jpg`
+- `site/wp-content/uploads/2026/01/human-relations-and-vaisnava-dharma-320x202.jpg`
+- `site/wp-content/uploads/2026/01/human-relations-and-vaisnava-dharma-700x441.jpg`
+- `site/wp-content/uploads/2026/01/human-society-and-vaisnava-dharma-part-3-320x202.jpg`
+- `site/wp-content/uploads/2026/01/human-society-and-vaisnava-dharma-part-3-700x441.jpg`
+- `site/wp-content/uploads/2026/01/human-society-vaisnava-dharma-essay-2-320x202.jpg`
+- `site/wp-content/uploads/2026/01/human-society-vaisnava-dharma-essay-2-700x441.jpg`
+- `site/wp-content/uploads/2026/02/vaisnavism-of-ancient-aryan-women-320x202.jpg`
+- `site/wp-content/uploads/2026/02/vaisnavism-of-ancient-aryan-women-700x441.jpg`
+- `site/wp-content/uploads/2026/02/worldly-activities-and-renunciation-pravrtti-o-nivrtti-320x202.jpg`
+- `site/wp-content/uploads/2026/02/worldly-activities-and-renunciation-pravrtti-o-nivrtti-700x441.jpg`
+- `site/wp-content/uploads/2026/05/a-modern-ideology-adhunika-vada-320x202.jpg`
+- `site/wp-content/uploads/2026/05/a-modern-ideology-adhunika-vada-700x441.jpg`
+- `site/wp-content/uploads/2026/05/Articles-by-Srila-Bhaktivinoda-Thakura-copy-200x200.webp`
+- `site/wp-content/uploads/2026/05/Articles-by-Srila-Bhaktivinoda-Thakura-copy-400x400.webp`
+- `site/wp-content/uploads/2026/05/Articles-by-Srila-Bhaktivinoda-Thakura-copy.webp`
+- `site/wp-content/uploads/2026/05/Audio-of-Srila-Bhaktivinoda-Thakura-copy-200x200.webp`
+- `site/wp-content/uploads/2026/05/Audio-of-Srila-Bhaktivinoda-Thakura-copy-400x400.webp`
+- `site/wp-content/uploads/2026/05/Audio-of-Srila-Bhaktivinoda-Thakura-copy.webp`
+- `site/wp-content/uploads/2026/05/Biography-of-Srila-Bhaktivinoda-Thakura-copy-200x200.webp`
+- `site/wp-content/uploads/2026/05/Biography-of-Srila-Bhaktivinoda-Thakura-copy-400x400.webp`
+- `site/wp-content/uploads/2026/05/Biography-of-Srila-Bhaktivinoda-Thakura-copy.webp`
+- `site/wp-content/uploads/2026/05/Books-by-Srila-Bhaktivinoda-Thakura-copy-200x200.webp`
+- `site/wp-content/uploads/2026/05/Books-by-Srila-Bhaktivinoda-Thakura-copy-400x400.webp`
+- `site/wp-content/uploads/2026/05/Books-by-Srila-Bhaktivinoda-Thakura-copy.webp`
+- `site/wp-content/uploads/2026/05/Photos-of-Srila-Bhaktivinoda-Thakura-copy-200x200.webp`
+- `site/wp-content/uploads/2026/05/Photos-of-Srila-Bhaktivinoda-Thakura-copy-400x400.webp`
+- `site/wp-content/uploads/2026/05/Photos-of-Srila-Bhaktivinoda-Thakura-copy.webp`
+- `site/wp-content/uploads/2026/05/Portrait-of-Bhaktivinoda-Thakura-200x268.jpg`
+- `site/wp-content/uploads/2026/05/Portrait-of-Bhaktivinoda-Thakura-400x535.jpg`
+- `site/wp-content/uploads/2026/05/Portrait-of-Bhaktivinoda-Thakura-600x803.jpg`
+- `site/wp-content/uploads/2026/05/Portrait-of-Bhaktivinoda-Thakura.jpg`
+- `site/wp-content/uploads/2026/05/Quotes-by-Srila-Bhaktivinoda-Thakura-copy-200x200.webp`
+- `site/wp-content/uploads/2026/05/Quotes-by-Srila-Bhaktivinoda-Thakura-copy-400x400.webp`
+- `site/wp-content/uploads/2026/05/Quotes-by-Srila-Bhaktivinoda-Thakura-copy.webp`
+- `site/wp-content/uploads/2026/05/samalocana-a-review-of-dwijendranath-tagores-lecture-320x202.jpg`
+- `site/wp-content/uploads/2026/05/samalocana-a-review-of-dwijendranath-tagores-lecture-700x441.jpg`
+- `site/wp-content/uploads/2026/05/Songs-of-Srila-Bhaktivinoda-Thakura-copy-200x200.webp`
+- `site/wp-content/uploads/2026/05/Songs-of-Srila-Bhaktivinoda-Thakura-copy-400x400.webp`
+- `site/wp-content/uploads/2026/05/Songs-of-Srila-Bhaktivinoda-Thakura-copy.webp`
+- `site/wp-content/uploads/2026/05/Tributes-to-Srila-Bhaktivinoda-Thakura-copy-200x200.webp`
+- `site/wp-content/uploads/2026/05/Tributes-to-Srila-Bhaktivinoda-Thakura-copy-400x400.webp`
+- `site/wp-content/uploads/2026/05/Tributes-to-Srila-Bhaktivinoda-Thakura-copy.webp`
+- `site/wp-content/uploads/2026/06/a-review-of-sri-laghu-bhagavatamrta-copy-320x202.webp`
+- `site/wp-content/uploads/2026/06/a-review-of-sri-laghu-bhagavatamrta-copy-700x441.webp`
+- `site/wp-content/uploads/2026/06/Anarthas-and-Offences-200x200.webp`
+- `site/wp-content/uploads/2026/06/Anarthas-and-Offences-400x400.webp`
+- `site/wp-content/uploads/2026/06/Anarthas-and-Offences-600x600.webp`
+- `site/wp-content/uploads/2026/06/Anarthas-and-Offences.webp`
+- `site/wp-content/uploads/2026/06/Audio-book-readings.webp`
+- `site/wp-content/uploads/2026/06/baula-sangita-200x300.jpg`
+- `site/wp-content/uploads/2026/06/baula-sangita-400x600.jpg`
+- `site/wp-content/uploads/2026/06/baula-sangita-600x900.jpg`
+- `site/wp-content/uploads/2026/06/baula-sangita-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/baula-sangita.jpg`
+- `site/wp-content/uploads/2026/06/bhagavatarka-marici-mala-200x300.jpg`
+- `site/wp-content/uploads/2026/06/bhagavatarka-marici-mala-400x600.jpg`
+- `site/wp-content/uploads/2026/06/bhagavatarka-marici-mala-600x900.jpg`
+- `site/wp-content/uploads/2026/06/bhagavatarka-marici-mala-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/bhagavatarka-marici-mala.jpg`
+- `site/wp-content/uploads/2026/06/bhajana-rahasya-200x300.jpg`
+- `site/wp-content/uploads/2026/06/bhajana-rahasya-400x600.jpg`
+- `site/wp-content/uploads/2026/06/bhajana-rahasya-600x900.jpg`
+- `site/wp-content/uploads/2026/06/bhajana-rahasya-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/bhajana-rahasya.jpg`
+- `site/wp-content/uploads/2026/06/bhakti-tattva-viveka-200x300.jpg`
+- `site/wp-content/uploads/2026/06/bhakti-tattva-viveka-400x600.jpg`
+- `site/wp-content/uploads/2026/06/bhakti-tattva-viveka-600x900.jpg`
+- `site/wp-content/uploads/2026/06/bhakti-tattva-viveka-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/bhakti-tattva-viveka.jpg`
+- `site/wp-content/uploads/2026/06/bhudeva-dasa-audio-kirtana.webp`
+- `site/wp-content/uploads/2026/06/brahma-samhita-prakasini-200x300.jpg`
+- `site/wp-content/uploads/2026/06/brahma-samhita-prakasini-400x600.jpg`
+- `site/wp-content/uploads/2026/06/brahma-samhita-prakasini-600x900.jpg`
+- `site/wp-content/uploads/2026/06/brahma-samhita-prakasini-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/brahma-samhita-prakasini.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-caritamrta-commentary-200x300.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-caritamrta-commentary-400x600.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-caritamrta-commentary-600x900.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-caritamrta-commentary-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-caritamrta-commentary.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-life-and-precepts-200x300.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-life-and-precepts-400x600.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-life-and-precepts-600x900.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-life-and-precepts-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/caitanya-life-and-precepts.jpg`
+- `site/wp-content/uploads/2026/06/datta-kaustubham-200x300.jpg`
+- `site/wp-content/uploads/2026/06/datta-kaustubham-400x600.jpg`
+- `site/wp-content/uploads/2026/06/datta-kaustubham-600x900.jpg`
+- `site/wp-content/uploads/2026/06/datta-kaustubham-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/datta-kaustubham.jpg`
+- `site/wp-content/uploads/2026/06/datta-vamsa-mala-200x300.jpg`
+- `site/wp-content/uploads/2026/06/datta-vamsa-mala-400x600.jpg`
+- `site/wp-content/uploads/2026/06/datta-vamsa-mala-600x900.jpg`
+- `site/wp-content/uploads/2026/06/datta-vamsa-mala-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/datta-vamsa-mala.jpg`
+- `site/wp-content/uploads/2026/06/discourse-muts-orrissa-200x300.jpg`
+- `site/wp-content/uploads/2026/06/discourse-muts-orrissa-400x600.jpg`
+- `site/wp-content/uploads/2026/06/discourse-muts-orrissa-600x900.jpg`
+- `site/wp-content/uploads/2026/06/discourse-muts-orrissa-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/discourse-muts-orrissa.jpg`
+- `site/wp-content/uploads/2026/06/Faith-sraddha-200x200.webp`
+- `site/wp-content/uploads/2026/06/Faith-sraddha-400x400.webp`
+- `site/wp-content/uploads/2026/06/Faith-sraddha-600x600.webp`
+- `site/wp-content/uploads/2026/06/Faith-sraddha.webp`
+- `site/wp-content/uploads/2026/06/garbha-stotra-commentary-200x300.jpg`
+- `site/wp-content/uploads/2026/06/garbha-stotra-commentary-400x600.jpg`
+- `site/wp-content/uploads/2026/06/garbha-stotra-commentary-600x900.jpg`
+- `site/wp-content/uploads/2026/06/garbha-stotra-commentary-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/garbha-stotra-commentary.jpg`
+- `site/wp-content/uploads/2026/06/gauranga-lila-smarana-mangala-200x300.jpg`
+- `site/wp-content/uploads/2026/06/gauranga-lila-smarana-mangala-400x600.jpg`
+- `site/wp-content/uploads/2026/06/gauranga-lila-smarana-mangala-600x900.jpg`
+- `site/wp-content/uploads/2026/06/gauranga-lila-smarana-mangala-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/gauranga-lila-smarana-mangala.jpg`
+- `site/wp-content/uploads/2026/06/gita-govinda-intro-200x300.jpg`
+- `site/wp-content/uploads/2026/06/gita-govinda-intro-400x600.jpg`
+- `site/wp-content/uploads/2026/06/gita-govinda-intro-600x900.jpg`
+- `site/wp-content/uploads/2026/06/gita-govinda-intro-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/gita-govinda-intro.jpg`
+- `site/wp-content/uploads/2026/06/gita-mala-200x300.jpg`
+- `site/wp-content/uploads/2026/06/gita-mala-400x600.jpg`
+- `site/wp-content/uploads/2026/06/gita-mala-600x900.jpg`
+- `site/wp-content/uploads/2026/06/gita-mala-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/gita-mala.jpg`
+- `site/wp-content/uploads/2026/06/gitavali-200x300.jpg`
+- `site/wp-content/uploads/2026/06/gitavali-400x600.jpg`
+- `site/wp-content/uploads/2026/06/gitavali-600x900.jpg`
+- `site/wp-content/uploads/2026/06/gitavali-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/gitavali.jpg`
+- `site/wp-content/uploads/2026/06/godruma-candra-bhajanopadesa-200x300.jpg`
+- `site/wp-content/uploads/2026/06/godruma-candra-bhajanopadesa-400x600.jpg`
+- `site/wp-content/uploads/2026/06/godruma-candra-bhajanopadesa-600x900.jpg`
+- `site/wp-content/uploads/2026/06/godruma-candra-bhajanopadesa-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/godruma-candra-bhajanopadesa.jpg`
+- `site/wp-content/uploads/2026/06/Guru-Disciple-200x200.webp`
+- `site/wp-content/uploads/2026/06/Guru-Disciple-400x400.webp`
+- `site/wp-content/uploads/2026/06/Guru-Disciple-600x600.webp`
+- `site/wp-content/uploads/2026/06/Guru-Disciple.webp`
+- `site/wp-content/uploads/2026/06/hari-nama-cintamani-200x300.jpg`
+- `site/wp-content/uploads/2026/06/hari-nama-cintamani-400x600.jpg`
+- `site/wp-content/uploads/2026/06/hari-nama-cintamani-600x900.jpg`
+- `site/wp-content/uploads/2026/06/hari-nama-cintamani-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/hari-nama-cintamani.jpg`
+- `site/wp-content/uploads/2026/06/isopanisad-vedarka-didhiti-200x300.jpg`
+- `site/wp-content/uploads/2026/06/isopanisad-vedarka-didhiti-400x600.jpg`
+- `site/wp-content/uploads/2026/06/isopanisad-vedarka-didhiti-600x900.jpg`
+- `site/wp-content/uploads/2026/06/isopanisad-vedarka-didhiti-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/isopanisad-vedarka-didhiti.jpg`
+- `site/wp-content/uploads/2026/06/jaiva-dharma-200x300.jpg`
+- `site/wp-content/uploads/2026/06/jaiva-dharma-400x600.jpg`
+- `site/wp-content/uploads/2026/06/jaiva-dharma-600x900.jpg`
+- `site/wp-content/uploads/2026/06/jaiva-dharma-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/jaiva-dharma.jpg`
+- `site/wp-content/uploads/2026/06/kalyana-kalpataru-200x300.jpg`
+- `site/wp-content/uploads/2026/06/kalyana-kalpataru-400x600.jpg`
+- `site/wp-content/uploads/2026/06/kalyana-kalpataru-600x900.jpg`
+- `site/wp-content/uploads/2026/06/kalyana-kalpataru-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/kalyana-kalpataru.jpg`
+- `site/wp-content/uploads/2026/06/keshavji-gaudiya-matha-kirtana.webp`
+- `site/wp-content/uploads/2026/06/kirtana-200x200.webp`
+- `site/wp-content/uploads/2026/06/kirtana-400x400.webp`
+- `site/wp-content/uploads/2026/06/kirtana-600x600.webp`
+- `site/wp-content/uploads/2026/06/kirtana.webp`
+- `site/wp-content/uploads/2026/06/Knowledge-Preaching-200x200.webp`
+- `site/wp-content/uploads/2026/06/Knowledge-Preaching-400x400.webp`
+- `site/wp-content/uploads/2026/06/Knowledge-Preaching-600x600.webp`
+- `site/wp-content/uploads/2026/06/Knowledge-Preaching.webp`
+- `site/wp-content/uploads/2026/06/krsna-bhajanamrtam-200x300.jpg`
+- `site/wp-content/uploads/2026/06/krsna-bhajanamrtam-400x600.jpg`
+- `site/wp-content/uploads/2026/06/krsna-bhajanamrtam-600x900.jpg`
+- `site/wp-content/uploads/2026/06/krsna-bhajanamrtam-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/krsna-bhajanamrtam.jpg`
+- `site/wp-content/uploads/2026/06/krsna-dasa-babaji-audio-kirtana.webp`
+- `site/wp-content/uploads/2026/06/madhumangala-prabhu-audio-kirtana.webp`
+- `site/wp-content/uploads/2026/06/manah-siksa-200x300.jpg`
+- `site/wp-content/uploads/2026/06/manah-siksa-400x600.jpg`
+- `site/wp-content/uploads/2026/06/manah-siksa-600x900.jpg`
+- `site/wp-content/uploads/2026/06/manah-siksa-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/manah-siksa.jpg`
+- `site/wp-content/uploads/2026/06/Maya-Illusion-200x200.webp`
+- `site/wp-content/uploads/2026/06/Maya-Illusion-400x400.webp`
+- `site/wp-content/uploads/2026/06/Maya-Illusion-600x600.webp`
+- `site/wp-content/uploads/2026/06/Maya-Illusion.webp`
+- `site/wp-content/uploads/2026/06/navadvipa-bhava-taranga-200x300.jpg`
+- `site/wp-content/uploads/2026/06/navadvipa-bhava-taranga-400x600.jpg`
+- `site/wp-content/uploads/2026/06/navadvipa-bhava-taranga-600x900.jpg`
+- `site/wp-content/uploads/2026/06/navadvipa-bhava-taranga-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/navadvipa-bhava-taranga.jpg`
+- `site/wp-content/uploads/2026/06/navadvipa-dhama-mahatmya-200x300.jpg`
+- `site/wp-content/uploads/2026/06/navadvipa-dhama-mahatmya-400x600.jpg`
+- `site/wp-content/uploads/2026/06/navadvipa-dhama-mahatmya-600x900.jpg`
+- `site/wp-content/uploads/2026/06/navadvipa-dhama-mahatmya-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/navadvipa-dhama-mahatmya.jpg`
+- `site/wp-content/uploads/2026/06/our-wants-200x300.jpg`
+- `site/wp-content/uploads/2026/06/our-wants-400x600.jpg`
+- `site/wp-content/uploads/2026/06/our-wants-600x900.jpg`
+- `site/wp-content/uploads/2026/06/our-wants-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/our-wants.jpg`
+- `site/wp-content/uploads/2026/06/poems-of-bhaktivinoda-200x300.jpg`
+- `site/wp-content/uploads/2026/06/poems-of-bhaktivinoda-400x600.jpg`
+- `site/wp-content/uploads/2026/06/poems-of-bhaktivinoda-600x900.jpg`
+- `site/wp-content/uploads/2026/06/poems-of-bhaktivinoda-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/poems-of-bhaktivinoda.jpg`
+- `site/wp-content/uploads/2026/06/prabhupada-audio-kirtana.webp`
+- `site/wp-content/uploads/2026/06/Prayers-200x200.webp`
+- `site/wp-content/uploads/2026/06/Prayers-400x400.webp`
+- `site/wp-content/uploads/2026/06/Prayers-600x600.webp`
+- `site/wp-content/uploads/2026/06/Prayers.webp`
+- `site/wp-content/uploads/2026/06/prema-pradipa-200x300.jpg`
+- `site/wp-content/uploads/2026/06/prema-pradipa-400x600.jpg`
+- `site/wp-content/uploads/2026/06/prema-pradipa-600x900.jpg`
+- `site/wp-content/uploads/2026/06/prema-pradipa-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/prema-pradipa.jpg`
+- `site/wp-content/uploads/2026/06/propogation-of-bhakti-200x200.webp`
+- `site/wp-content/uploads/2026/06/propogation-of-bhakti-400x400.webp`
+- `site/wp-content/uploads/2026/06/propogation-of-bhakti-600x600.webp`
+- `site/wp-content/uploads/2026/06/propogation-of-bhakti.webp`
+- `site/wp-content/uploads/2026/06/Quarrelling-200x200.webp`
+- `site/wp-content/uploads/2026/06/Quarrelling-400x400.webp`
+- `site/wp-content/uploads/2026/06/Quarrelling-600x600.webp`
+- `site/wp-content/uploads/2026/06/Quarrelling.webp`
+- `site/wp-content/uploads/2026/06/Rasa-200x200.webp`
+- `site/wp-content/uploads/2026/06/Rasa-400x400.webp`
+- `site/wp-content/uploads/2026/06/Rasa-600x600.webp`
+- `site/wp-content/uploads/2026/06/rasa-sanketa-200x300.jpg`
+- `site/wp-content/uploads/2026/06/rasa-sanketa-400x600.jpg`
+- `site/wp-content/uploads/2026/06/rasa-sanketa-600x900.jpg`
+- `site/wp-content/uploads/2026/06/rasa-sanketa-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/rasa-sanketa.jpg`
+- `site/wp-content/uploads/2026/06/Rasa.webp`
+- `site/wp-content/uploads/2026/06/rasika-ranjana-bhagavad-gita-200x300.jpg`
+- `site/wp-content/uploads/2026/06/rasika-ranjana-bhagavad-gita-400x600.jpg`
+- `site/wp-content/uploads/2026/06/rasika-ranjana-bhagavad-gita-600x900.jpg`
+- `site/wp-content/uploads/2026/06/rasika-ranjana-bhagavad-gita-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/rasika-ranjana-bhagavad-gita.jpg`
+- `site/wp-content/uploads/2026/06/sadhana-200x200.webp`
+- `site/wp-content/uploads/2026/06/sadhana-400x400.webp`
+- `site/wp-content/uploads/2026/06/sadhana-600x600.webp`
+- `site/wp-content/uploads/2026/06/sadhana.webp`
+- `site/wp-content/uploads/2026/06/Sadhu-sanga-200x200.webp`
+- `site/wp-content/uploads/2026/06/Sadhu-sanga-400x400.webp`
+- `site/wp-content/uploads/2026/06/Sadhu-sanga-600x600.webp`
+- `site/wp-content/uploads/2026/06/Sadhu-sanga.webp`
+- `site/wp-content/uploads/2026/06/sannyasi-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sannyasi-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sannyasi-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sannyasi-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sannyasi.jpg`
+- `site/wp-content/uploads/2026/06/saranagati-200x300.jpg`
+- `site/wp-content/uploads/2026/06/saranagati-400x600.jpg`
+- `site/wp-content/uploads/2026/06/saranagati-600x900.jpg`
+- `site/wp-content/uploads/2026/06/saranagati-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/saranagati.jpg`
+- `site/wp-content/uploads/2026/06/Sectarianism-200x200.webp`
+- `site/wp-content/uploads/2026/06/Sectarianism-400x400.webp`
+- `site/wp-content/uploads/2026/06/Sectarianism-600x600.webp`
+- `site/wp-content/uploads/2026/06/Sectarianism.webp`
+- `site/wp-content/uploads/2026/06/Service-200x200.webp`
+- `site/wp-content/uploads/2026/06/Service-400x400.webp`
+- `site/wp-content/uploads/2026/06/Service-600x600.webp`
+- `site/wp-content/uploads/2026/06/Service.webp`
+- `site/wp-content/uploads/2026/06/seva-lalasa-200x300.jpg`
+- `site/wp-content/uploads/2026/06/seva-lalasa-400x600.jpg`
+- `site/wp-content/uploads/2026/06/seva-lalasa-600x900.jpg`
+- `site/wp-content/uploads/2026/06/seva-lalasa-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/seva-lalasa.jpg`
+- `site/wp-content/uploads/2026/06/siksastakam-sammodana-bhasyam-200x300.jpg`
+- `site/wp-content/uploads/2026/06/siksastakam-sammodana-bhasyam-400x600.jpg`
+- `site/wp-content/uploads/2026/06/siksastakam-sammodana-bhasyam-600x900.jpg`
+- `site/wp-content/uploads/2026/06/siksastakam-sammodana-bhasyam-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/siksastakam-sammodana-bhasyam.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-siksamrta-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-siksamrta-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-siksamrta-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-siksamrta-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-siksamrta.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-upanisad-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-upanisad-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-upanisad-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-upanisad-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-caitanya-upanisad.jpg`
+- `site/wp-content/uploads/2026/06/sri-godruma-kalpatavi-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-godruma-kalpatavi-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-godruma-kalpatavi-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-godruma-kalpatavi-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-godruma-kalpatavi.jpg`
+- `site/wp-content/uploads/2026/06/sri-hari-nama-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-hari-nama-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-hari-nama-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-hari-nama-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-hari-nama.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsna-samhita-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsna-samhita-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsna-samhita-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsna-samhita-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsna-samhita.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsnacandra-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsnacandra-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsnacandra-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsnacandra-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-krsnacandra.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-mahima-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-mahima-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-mahima-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-mahima-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-mahima.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-pracara-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-pracara-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-pracara-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-pracara-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-nama-pracara.jpg`
+- `site/wp-content/uploads/2026/06/sri-siksastakam-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-siksastakam-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-siksastakam-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-siksastakam-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-siksastakam.jpg`
+- `site/wp-content/uploads/2026/06/sri-upadesamrta-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sri-upadesamrta-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sri-upadesamrta-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sri-upadesamrta-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sri-upadesamrta.jpg`
+- `site/wp-content/uploads/2026/06/sriman-mahaprabhura-siksa-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sriman-mahaprabhura-siksa-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sriman-mahaprabhura-siksa-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sriman-mahaprabhura-siksa-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sriman-mahaprabhura-siksa.jpg`
+- `site/wp-content/uploads/2026/06/sva-niyama-dvadasakam-200x300.jpg`
+- `site/wp-content/uploads/2026/06/sva-niyama-dvadasakam-400x600.jpg`
+- `site/wp-content/uploads/2026/06/sva-niyama-dvadasakam-600x900.jpg`
+- `site/wp-content/uploads/2026/06/sva-niyama-dvadasakam-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/sva-niyama-dvadasakam.jpg`
+- `site/wp-content/uploads/2026/06/tattva-sutra-200x300.jpg`
+- `site/wp-content/uploads/2026/06/tattva-sutra-400x600.jpg`
+- `site/wp-content/uploads/2026/06/tattva-sutra-600x900.jpg`
+- `site/wp-content/uploads/2026/06/tattva-sutra-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/tattva-sutra.jpg`
+- `site/wp-content/uploads/2026/06/tattva-viveka-200x300.jpg`
+- `site/wp-content/uploads/2026/06/tattva-viveka-400x600.jpg`
+- `site/wp-content/uploads/2026/06/tattva-viveka-600x900.jpg`
+- `site/wp-content/uploads/2026/06/tattva-viveka-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/tattva-viveka.jpg`
+- `site/wp-content/uploads/2026/06/the-poriade-200x300.jpg`
+- `site/wp-content/uploads/2026/06/the-poriade-400x600.jpg`
+- `site/wp-content/uploads/2026/06/the-poriade-600x900.jpg`
+- `site/wp-content/uploads/2026/06/the-poriade-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/the-poriade.jpg`
+- `site/wp-content/uploads/2026/06/the-soul-and-its-nature-200x200.webp`
+- `site/wp-content/uploads/2026/06/the-soul-and-its-nature-400x400.webp`
+- `site/wp-content/uploads/2026/06/the-soul-and-its-nature-600x600.webp`
+- `site/wp-content/uploads/2026/06/the-soul-and-its-nature.webp`
+- `site/wp-content/uploads/2026/06/vaisnava-conduct-200x200.webp`
+- `site/wp-content/uploads/2026/06/vaisnava-conduct-400x400.webp`
+- `site/wp-content/uploads/2026/06/vaisnava-conduct-600x600.webp`
+- `site/wp-content/uploads/2026/06/vaisnava-conduct.webp`
+- `site/wp-content/uploads/2026/06/vaisnava-nimantrana-200x300.jpg`
+- `site/wp-content/uploads/2026/06/vaisnava-nimantrana-400x600.jpg`
+- `site/wp-content/uploads/2026/06/vaisnava-nimantrana-600x900.jpg`
+- `site/wp-content/uploads/2026/06/vaisnava-nimantrana-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/vaisnava-nimantrana.jpg`
+- `site/wp-content/uploads/2026/06/vaisnava-siddhanta-mala-200x300.jpg`
+- `site/wp-content/uploads/2026/06/vaisnava-siddhanta-mala-400x600.jpg`
+- `site/wp-content/uploads/2026/06/vaisnava-siddhanta-mala-600x900.jpg`
+- `site/wp-content/uploads/2026/06/vaisnava-siddhanta-mala-683x1024.jpg`
+- `site/wp-content/uploads/2026/06/vaisnava-siddhanta-mala.jpg`
+- `site/wp-content/uploads/2026/07/bhakti-siddhantamrtam-200x300.jpg`
+- `site/wp-content/uploads/2026/07/bhakti-siddhantamrtam-400x600.jpg`
+- `site/wp-content/uploads/2026/07/bhakti-siddhantamrtam-600x900.jpg`
+- `site/wp-content/uploads/2026/07/bhakti-siddhantamrtam-683x1024.jpg`
+- `site/wp-content/uploads/2026/07/bhakti-siddhantamrtam.jpg`
+- `site/wp-content/uploads/2026/07/bhaktivinoda-stava-1024x599.jpg`
+- `site/wp-content/uploads/2026/07/did-bhaktivinoda-thakura-advocate-caste-brahmanism-1024x599.jpg`
+- `site/wp-content/uploads/2026/07/Preface-to-the-Padma-Purana-320x202.png`
+- `site/wp-content/uploads/2026/07/Preface-to-the-Padma-Purana-700x441.png`
+- `site/wp-content/uploads/2026/07/thakura-bhaktivinoda-the-modern-day-vyasa-1024x599.jpg`
+- `site/wp-content/uploads/2026/07/the-importance-of-bhaktivinoda-thakura-1024x598.jpg`
+- `site/wp-content/uploads/2026/07/viraha-gitika-a-song-of-separation-1024x599.jpg`
+- `site/wp-content/uploads/fusion-icons/wedding-v1.0/fonts/wedding.eot`
+- `site/wp-content/uploads/fusion-icons/wedding-v1.0/fonts/wedding.ttf`
+- `site/wp-content/uploads/fusion-icons/wedding-v1.0/fonts/wedding.woff`
+- `site/wp-content/uploads/wordpress-popular-posts/11934-featured-100x75_1.5x.jpeg`
+- `site/wp-content/uploads/wordpress-popular-posts/11934-featured-100x75_2.5x.jpeg`
+- `site/wp-content/uploads/wordpress-popular-posts/11934-featured-100x75_2x.jpeg`
+- `site/wp-content/uploads/wordpress-popular-posts/11934-featured-100x75_3x.jpeg`
+- `site/wp-content/uploads/wordpress-popular-posts/11934-featured-100x75.jpeg`
+- `site/wp-content/uploads/wordpress-popular-posts/4345-featured-100x75_1.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/4345-featured-100x75_2.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/4345-featured-100x75_2x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/4345-featured-100x75_3x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/4345-featured-100x75.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/5922-featured-100x75_1.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/5922-featured-100x75_2.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/5922-featured-100x75_2x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/5922-featured-100x75_3x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/5922-featured-100x75.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/595-featured-100x75_1.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/595-featured-100x75_2.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/595-featured-100x75_2x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/595-featured-100x75_3x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/595-featured-100x75.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/615-featured-100x75_1.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/615-featured-100x75_2.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/615-featured-100x75_2x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/615-featured-100x75_3x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/615-featured-100x75.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/700-featured-100x75_1.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/700-featured-100x75_2.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/700-featured-100x75_2x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/700-featured-100x75_3x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/700-featured-100x75.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/872-featured-100x75_1.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/872-featured-100x75_2.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/872-featured-100x75_2x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/872-featured-100x75_3x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/872-featured-100x75.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/920-featured-100x75_1.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/920-featured-100x75_2.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/920-featured-100x75_2x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/920-featured-100x75_3x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/920-featured-100x75.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/982-featured-100x75_1.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/982-featured-100x75_2.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/982-featured-100x75_2x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/982-featured-100x75_3x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/982-featured-100x75.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/993-featured-100x75_1.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/993-featured-100x75_2.5x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/993-featured-100x75_2x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/993-featured-100x75_3x.jpg`
+- `site/wp-content/uploads/wordpress-popular-posts/993-featured-100x75.jpg`
+- `site/wp-json/wordpress-popular-posts/v2/views/11745`
+- `site/wp-json/wordpress-popular-posts/v2/views/124`
+- `site/wp-json/wordpress-popular-posts/v2/views/318`
+- `site/wp-json/wordpress-popular-posts/v2/views/324`
+- `site/wp-json/wordpress-popular-posts/v2/views/329`
+- `site/wp-json/wordpress-popular-posts/v2/views/331`
+- `site/wp-json/wordpress-popular-posts/v2/views/3717`
+- `site/wp-json/wordpress-popular-posts/v2/views/487`
+- `site/wp-json/wordpress-popular-posts/v2/views/89`
+- `site/wp-json/wordpress-popular-posts/v2/views/969`
+- `site/wp-json/wordpress-popular-posts/v2/views/972`
+- `site/wp-json/wp/v2/pages/11745`
+- `site/wp-json/wp/v2/pages/124`
+- `site/wp-json/wp/v2/pages/318`
+- `site/wp-json/wp/v2/pages/324`
+- `site/wp-json/wp/v2/pages/329`
+- `site/wp-json/wp/v2/pages/331`
+- `site/wp-json/wp/v2/pages/3717`
+- `site/wp-json/wp/v2/pages/487`
+- `site/wp-json/wp/v2/pages/89`
+- `site/wp-json/wp/v2/pages/9`
+- `site/wp-json/wp/v2/pages/969`
+- `site/wp-json/wp/v2/pages/972`
+- `site/writings/articles`
+- `site/writings/books`
+- `site/writings/quotes`
+- `site/writings/songs-poems`
+- `third-party.json`
+
+## Coding checklist for AI tools
+1. Inspect `site/index.html` and `DESIGN-MANIFEST.json` first and identify reusable components before coding.
+2. Implement each user-facing screen file as its own route/surface; keep launcher, landing, app, platform, and OS widget files separate.
+3. Extract design tokens into the target stack: colors, type scale, spacing, radius, shadows, and motion.
+4. Implement layout with real 2025–2026 responsive breakpoints, fluid type/spacing, and container-query-aware component behavior; test with no horizontal overflow.
+5. Preserve interactive controls, hover/focus/pressed states, form behavior, validation, and copy actions where present.
+6. Implement domain-specific in-app modules with real states; do not flatten them into generic cards.
+7. Keep landing page, product screens, and OS widget/quick-access surfaces separate when present.
+8. Confirm the production result visually matches the exported design before refactoring internals.
+9. Reject implementation shortcuts that flatten the design into generic cards, generic gradients, placeholder stats, or framework-default typography.
+10. If a detail is ambiguous, keep the exported HTML/CSS/JS behavior rather than inventing a new pattern.

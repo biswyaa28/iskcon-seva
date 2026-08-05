@@ -1,0 +1,260 @@
+[
+  {
+    "url": "https://bhaktivinodainstitute.org/contact-us",
+    "status": 301,
+    "type": "document",
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/contact-us/",
+    "status": 200,
+    "type": "document",
+    "ct": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/uploads/2022/05/Artboard-2-copy-1.png",
+    "status": 200,
+    "type": "image",
+    "ct": "image/webp"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/plugins/wordpress-popular-posts/assets/js/wpp.min.js?ver=7.4.0",
+    "status": 200,
+    "type": "script",
+    "ct": "application/javascript"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-button-css-style.css?ver=1785378967",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-uploads-siteorigin-widgets-sow-button-flat-53f1c109015d.css?ver=1785378967",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-uploads-siteorigin-widgets-sow-button-flat-ee06bcb9477c.css?ver=1785378967",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-language-switchers-legacy-list-vertical-style.min.css?ver=1785378967",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-uploads-siteorigin-widgets-sow-button-flat-8b263530fb10.css?ver=1785378967",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-language-switchers-menu-item-style.min.css?ver=1785378967",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-player-build-style.css?ver=1785378967",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/plugins/audioigniter/player/build/app.js?ver=2.0.4",
+    "status": 200,
+    "type": "script",
+    "ct": "application/javascript"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-fusion-core-css-comment-form.min.css?ver=1785378967",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/cache/breeze-minification/css/breeze_contact-us-1-972-assets-css-style.min.css?ver=1785378967",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+    "status": 200,
+    "type": "script",
+    "ct": "application/javascript"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/plugins/copy-the-code/assets/frontend/js/lib/ctc.js?ver=5.5.2",
+    "status": 200,
+    "type": "script",
+    "ct": "application/javascript"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/plugins/copy-the-code/assets/frontend/js/global-injector.js?ver=5.5.2",
+    "status": 200,
+    "type": "script",
+    "ct": "application/javascript"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/uploads/fusion-scripts/d158cec7cb5568861c361309f802804d.min.js?ver=3.15.6",
+    "status": 200,
+    "type": "script",
+    "ct": "application/javascript"
+  },
+  {
+    "url": "https://www.google.com/recaptcha/api.js?hl=en_US&ver=7.15.6",
+    "status": 200,
+    "type": "script",
+    "ct": "text/javascript; charset=utf-8"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/themes/Avada/includes/lib/assets/fonts/icomoon/awb-icons.woff",
+    "status": 200,
+    "type": "font",
+    "ct": "application/font-woff"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/themes/Avada/includes/lib/assets/fonts/fontawesome/webfonts/fa-solid-900.woff2",
+    "status": 200,
+    "type": "font",
+    "ct": "application/font-woff2"
+  },
+  {
+    "url": "https://connect.facebook.net/en_US/fbevents.js",
+    "status": 200,
+    "type": "script",
+    "ct": "application/x-javascript; charset=utf-8"
+  },
+  {
+    "url": "https://www.googletagmanager.com/gtag/js?id=G-4ZDYTKNDTB",
+    "status": 200,
+    "type": "script",
+    "ct": "application/javascript; charset=UTF-8"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png",
+    "status": 200,
+    "type": "image",
+    "ct": "image/webp"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/gentiumplus/v2/Iurd6Ytw-oSPaZ00r2bNe8VZhZFN2G0.woff2",
+    "status": 200,
+    "type": "font",
+    "ct": "font/woff2"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/gentiumplus/v2/IurC6Ytw-oSPaZ00r2bNe8VRMLRY50ww.woff2",
+    "status": 200,
+    "type": "font",
+    "ct": "font/woff2"
+  },
+  {
+    "url": "https://connect.facebook.net/signals/config/1339790810090592?v=2.9.366&r=stable&domain=bhaktivinodainstitute.org&hme=78c3d709c6e52779dc9d6e8b8770857bb5dfd27159797805bacb5f93b9e7568a&ex_m=108%2C210%2C160%2C22%2C73%2C74%2C151%2C69%2C68%2C11%2C169%2C93%2C16%2C143%2C131%2C39%2C76%2C81%2C139%2C165%2C171%2C26%2C27%2C28%2C30%2C48%2C152%2C78%2C116%2C18%2C20%2C44%2C40%2C42%2C41%2C86%2C95%2C99%2C114%2C150%2C153%2C46%2C115%2C24%2C21%2C123%2C70%2C36%2C155%2C154%2C156%2C147%2C145%2C25%2C35%2C59%2C113%2C167%2C71%2C17%2C158%2C118%2C84%2C67%2C19%2C88%2C89%2C120%2C87%2C141%2C140%2C144%2C100%2C166%2C34%2C49%2C117%2C47%2C8%2C4%2C5%2C7%2C6%2C3%2C94%2C105%2C172%2C177%2C224%2C75%2C237%2C236%2C235%2C23%2C33%2C55%2C107%2C61%2C10%2C64%2C101%2C102%2C103%2C109%2C134%2C31%2C29%2C136%2C137%2C138%2C133%2C132%2C161%2C77%2C164%2C162%2C163%2C50%2C60%2C127%2C15%2C168%2C45%2C281%2C282%2C280%2C295%2C313%2C217%2C206%2C62%2C207%2C205%2C316%2C307%2C52%2C218%2C111%2C135%2C83%2C125%2C54%2C124%2C130%2C129%2C58%2C65%2C63%2C157%2C79%2C80%2C119%2C37%2C32%2C53%2C56%2C104%2C170%2C1%2C128%2C14%2C126%2C12%2C2%2C57%2C96%2C66%2C122%2C92%2C91%2C173%2C174%2C97%2C98%2C9%2C106%2C51%2C148%2C90%2C82%2C72%2C121%2C110%2C43%2C149%2C0%2C85%2C142%2C146%2C159%2C38%2C112%2C13%2C175",
+    "status": 200,
+    "type": "script",
+    "ct": "application/x-javascript; charset=utf-8"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/opensans/v44/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4gaVI.woff2",
+    "status": 200,
+    "type": "font",
+    "ct": "font/woff2"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/gentiumplus/v2/Iurd6Ytw-oSPaZ00r2bNe8VZi5FN.woff2",
+    "status": 200,
+    "type": "font",
+    "ct": "font/woff2"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2",
+    "status": 200,
+    "type": "font",
+    "ct": "font/woff2"
+  },
+  {
+    "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-4ZDYTKNDTB&cid=212595063.1785420067&gtm=45je67s1v872475021za200zd872475021&rcb=8&aip=1&dma=0&gcd=13l3l3l3l1l1&npa=0&frm=0&tag_exp=115616985~115938466~115938469~118897920~118897930~119896802~120084214",
+    "status": 204,
+    "type": "ping",
+    "ct": "text/plain"
+  },
+  {
+    "url": "https://www.google.co.in/ads/ga-audiences?v=1&t=sr&slf_rd=1&_r=4&tid=G-4ZDYTKNDTB&cid=212595063.1785420067&gtm=45je67s1v872475021za200zd872475021&rcb=8&aip=1&dma=0&gcd=13l3l3l3l1l1&npa=0&frm=0&tag_exp=115616985~115938466~115938469~118897920~118897930~119896802~120084214&z=1166157401",
+    "status": 200,
+    "type": "image",
+    "ct": "image/gif"
+  },
+  {
+    "url": "https://analytics.google.com/g/collect?v=2&tid=G-4ZDYTKNDTB&gtm=45je67s1v872475021za200zd872475021&_p=1785420066795&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAGA&are=1&cid=212595063.1785420067&frm=0&pscdl=noapi&rcb=8&sr=1440x900&uaa=arm&uab=64&uafvl=Chromium%3B148.0.7778.96%7CHeadlessChrome%3B148.0.7778.96%7CNot%252FA)Brand%3B99.0.0.0&uam=&uamb=0&uap=macOS&uapv=26.5.2&uaw=0&ul=en-us&gaf=2&_s=1&tag_exp=115616985~115938466~115938469~118897920~118897930~119896802~120084214&sid=1785420067&sct=1&seg=0&dl=https%3A%2F%2Fbhaktivinodainstitute.org%2Fcontact-us%2F&dt=Contact%20Us%20-%20Bhaktivinoda%20Institute&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&gap.plf=5&tfd=1362",
+    "status": 204,
+    "type": "fetch",
+    "ct": "text/plain"
+  },
+  {
+    "url": "https://www.gstatic.com/recaptcha/releases/w_Yb7dGGXaKesJ7BMiqFJqBG/recaptcha__en.js",
+    "status": 200,
+    "type": "script",
+    "ct": "text/javascript"
+  },
+  {
+    "url": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfJTa4ZAAAAAO3U_ZyCGacPzblF9hdfQ08MThXM&co=aHR0cHM6Ly9iaGFrdGl2aW5vZGFpbnN0aXR1dGUub3JnOjQ0Mw..&hl=en&v=w_Yb7dGGXaKesJ7BMiqFJqBG&theme=light&size=normal&anchor-ms=40000&execute-ms=30000&cb=nxt0r57zqqcu",
+    "status": 200,
+    "type": "document",
+    "ct": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.gstatic.com/recaptcha/releases/w_Yb7dGGXaKesJ7BMiqFJqBG/styles__ltr.css",
+    "status": 200,
+    "type": "stylesheet",
+    "ct": "text/css"
+  },
+  {
+    "url": "https://www.gstatic.com/recaptcha/api2/logo_48.png",
+    "status": 200,
+    "type": "image",
+    "ct": "image/png"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2",
+    "status": 200,
+    "type": "font",
+    "ct": "font/woff2"
+  },
+  {
+    "url": "https://www.google.com/recaptcha/api2/webworker.js?hl=en&v=w_Yb7dGGXaKesJ7BMiqFJqBG",
+    "status": 200,
+    "type": "script",
+    "ct": "text/javascript; charset=utf-8"
+  },
+  {
+    "url": "https://www.google.com/recaptcha/api2/bframe?hl=en&v=w_Yb7dGGXaKesJ7BMiqFJqBG&k=6LfJTa4ZAAAAAO3U_ZyCGacPzblF9hdfQ08MThXM&bft=0dAFcWeA6IRpfUwQr9n8odTZa2JmAtaOvCblL-x55oRp6UCs1dmKcQX3jFNEWWAvctmfVTrX_MYIVCVK6qokpEyXfAZJZKARj7SA",
+    "status": 200,
+    "type": "document",
+    "ct": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-json/wordpress-popular-posts/v2/views/972",
+    "status": 201,
+    "type": "fetch",
+    "ct": "application/json; charset=UTF-8"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png",
+    "status": 200,
+    "type": "image",
+    "ct": "image/webp"
+  },
+  {
+    "url": "https://bhaktivinodainstitute.org/wp-admin/admin-ajax.php",
+    "status": 200,
+    "type": "xhr",
+    "ct": "text/html; charset=UTF-8"
+  }
+]
